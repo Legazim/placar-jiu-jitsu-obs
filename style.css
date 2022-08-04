@@ -1,4 +1,63 @@
-.total {
-    background: #000;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #e4e4e4;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.competidores {
+    width: 100%;
+}
+
+.van-pun {
+    display: flex;
+    flex-direction: column;
+}
+
+.azul {
+    background-color: blue;
     color: white;
+}
+
+.competidor {
+    height: 50vh;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+.total {
+    background: transparent;
+    color: white;
+    width: 40%;
+    display: grid;
+}
+
+.tempo {
+    background-color: white;
+    color: #000;
+    text-align: center;
+    height: fit-content;
+}
+
+#counter {
+    font-size: 5rem;
+    padding: 1rem;
+    width: 6ch;
 }
