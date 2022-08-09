@@ -10,7 +10,6 @@ wss.on('connection', ws => {
     ws.on('message', msg => {
         try {
             const data = JSON.parse(msg);
-            console.log(data);
             wss.broadcast(JSON.stringify(data));
         } catch (error) {
             console.log(`Message has an error: ${error.message}`);
