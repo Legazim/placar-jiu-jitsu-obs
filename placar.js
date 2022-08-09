@@ -23,6 +23,18 @@ placar = {
             'v': false
         },
         't': 0
+    },
+}
+
+var pTimer = {
+    'mmInitialTime': 10,
+    'ssInitialTime': 00,
+    'mm': 10,
+    'ss': 00,
+    'timerRunning': false,
+    'timerStatus': {
+        'text': 'Parado',
+        'status': 'stopped'
     }
 }
 
@@ -32,14 +44,6 @@ const counter = document.getElementById('counter')
 const mmCounter = document.getElementById('minutes')
 const ssCounter = document.getElementById('seconds')
 
-var mmInitialTime = 10
-var ssInitialTime = 00
-
-var mm = mmInitialTime // Minutos
-var ss = ssInitialTime // Segundos
-
-var timerRunning = false
-var timerStatus = ['Parado', 'stopped']
 var cron
 var milesimo = 0
 
@@ -102,7 +106,7 @@ fieldsId.forEach(id => {
 
         updateTotal()
 
-        if (timerStatus[0] == 'Tempo esgotado') {
+        if (pTimer.timerStatus.status == 'Tempo esgotado') {
             removeWinner()
             declareWinner(checkWinner())
         }
@@ -112,8 +116,9 @@ fieldsId.forEach(id => {
 })
 
 function startTimer() {
-    timerRunning = true
-    timerStatus = ['Tempo restante', 'running']
+    pTimer.timerRunning = true
+    pTimer.timerStatus.text = 'Tempo restante'
+    pTimer.timerStatus.status = 'running'
     cron = setInterval(() => {
         milesimo += 100
         if (milesimo >= 1000) {
@@ -127,19 +132,20 @@ function startTimer() {
 
 function pauseTimer() {
     clearInterval(cron)
-    timerRunning = false
-    timerStatus = ['Pausa', 'paused']
+    pTimer.timerRunning = false
+    pTimer.timerStatus.text = 'Pausa'
+    pTimer.timerStatus.status = 'paused'
     updateTimerDOM()
 }
 
 
 
 function timer() {
-    ss--
-    if (ss < 0) {
-        ss = 59
-        mm--
-        if (mm <= 0) {
+    pTimer.ss--
+    if (pTimer.ss < 0) {
+        pTimer.ss = 59
+        pTimer.mm--
+        if (pTimer.mm <= 0) {
             timesUp()
         }
     }
@@ -149,7 +155,7 @@ function timer() {
 
 
 function timerCommand(command) {
-    if (timerRunning == false) {
+    if (pTimer.timerRunning == false) {
         if (command.ctrlKey) {
             if (confirm('Deseja reiniciar o tempo e a contagem atual'))
                 removeWinner()
@@ -163,29 +169,30 @@ function timerCommand(command) {
 }
 
 function redefineInitialTime() {
-    format = prompt('Atualizar tempo', `${addZeroes(mm, 2)}:${addZeroes(ss, 2)}`)
-    format = format != null ? format.split(':') : [mm, ss]
+    format = prompt('Atualizar tempo',`${addZeroes(pTimer.mm, 2)}:${addZeroes(pTimer.ss, 2)}`)
+    format = format != null ? format.split(':') : [pTimer.mm, pTimer.ss]
     format[1] = format[1] == undefined ? 00 : format[1]
 
-    mm = Number(format[0])
-    ss = Number(format[1])
+    pTimer.mm = Number(format[0])
+    pTimer.ss = Number(format[1])
 
     updateTimerDOM()
 }
 
 function timesUp() {
-    mm = 0
-    ss = 0
+    pTimer.mm = 0
+    pTimer.ss = 0
     clearInterval(cron)
-    timerRunning = false
-    timerStatus = ['Tempo esgotado', 'stopped']
+    pTimer.timerRunning = false
+    pTimer.timerStatus.text = 'Tempo esgotado'
+    pTimer.timerStatus.status = 'stopped'
 
     updateTimerDOM()
     declareWinner(checkWinner())
 }
 
 function updateTimerDOM() {
-    if (timerStatus[1] == 'stopped') {
+    if (pTimer.timerStatus.status == 'stopped') {
         document.getElementById('set-time').classList.remove('hide')
     } else {
         document.getElementById('set-time').classList.add('hide')
@@ -195,11 +202,11 @@ function updateTimerDOM() {
         statusDisplay.classList.remove(status)
     })
 
-    mmCounter.textContent = addZeroes(mm, 2)
-    ssCounter.textContent = addZeroes(ss, 2)
+    mmCounter.textContent = addZeroes(pTimer.mm, 2)
+    ssCounter.textContent = addZeroes(pTimer.ss, 2)
 
-    statusDisplay.textContent = timerStatus[0]
-    statusDisplay.classList.add(timerStatus[1])
+    statusDisplay.textContent = pTimer.timerStatus.text
+    statusDisplay.classList.add(pTimer.timerStatus.status)
 }
 
 //  Placar funções
@@ -338,12 +345,13 @@ function removeWinner() {
 }
 
 function resetScoreAndTime() {
-    timerRunning = false
-    timerStatus = ['Parado', 'stopped']
+    pTimer.timerRunning = false
+    pTimer.timerStatus.text = 'Parado'
+    pTimer.timerStatus.status = 'stopped'
     clearInterval(cron)
 
-    mm = mmInitialTime
-    ss = ssInitialTime
+    pTimer.mm = pTimer.mmInitialTime
+    pTimer.ss = pTimer.ssInitialTime
 
     milesimo = 0
 

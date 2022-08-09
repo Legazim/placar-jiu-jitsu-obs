@@ -19,6 +19,11 @@ body {
     flex-direction: column;
 }
 
+section {
+    width: 100%;
+    height: 100%;
+}
+
 p {
     text-align: center;
 }
@@ -98,11 +103,11 @@ p {
     align-items: center;
 }
 
-.blue .total .ponto {
+.blue .total-ponto {
     color: black;
 }
 
-.total .ponto {
+.total-ponto {
     font-size: 10rem;
     padding: 0rem 3rem;
     background-color: white;
