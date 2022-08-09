@@ -1,4 +1,5 @@
 fieldsId = []
+wsConnection = false
 placar = {
     'b': {
         '2': 0,
@@ -23,7 +24,7 @@ placar = {
             'v': false
         },
         't': 0
-    },
+    }
 }
 
 var pTimer = {
@@ -77,8 +78,6 @@ fieldsId.forEach(id => {
     let element = document.getElementById(id)
     let clicked = id.slice([-1])
     element.onclick = click => {
-
-
         if (clickType(click)) {
             placar[id[0]][clicked]++
 
@@ -104,7 +103,7 @@ fieldsId.forEach(id => {
             }
         }
 
-        updateTotal()
+        sumTotal()
 
         if (pTimer.timerStatus.status == 'Tempo esgotado') {
             removeWinner()
@@ -151,8 +150,6 @@ function timer() {
     }
     updateTimerDOM()
 }
-
-
 
 function timerCommand(command) {
     if (pTimer.timerRunning == false) {
@@ -207,10 +204,14 @@ function updateTimerDOM() {
 
     statusDisplay.textContent = pTimer.timerStatus.text
     statusDisplay.classList.add(pTimer.timerStatus.status)
+
+    if (wsConnection == true) {
+        ws.send(JSON.stringify({pTimer}))
+    }
 }
 
 //  Placar funções
-function updateTotal() {
+function sumTotal() {
     let totalScore = {
         'b': 0,
         'w': 0
@@ -242,6 +243,9 @@ function updatePlacarDOM() {
 
         element.textContent = addZeroes(content, 2)
     })
+    if (wsConnection == true) {
+        ws.send(JSON.stringify({placar}))
+    }
 }
 
 function addZeroes(num, len) {
@@ -399,4 +403,3 @@ function setTimerDOMPosition() {
     // let distance = referenceRect.left
     document.documentElement.style.cssText = `--transform: ${distance}px`
 }
-
