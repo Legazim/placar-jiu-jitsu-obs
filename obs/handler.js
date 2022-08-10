@@ -9,17 +9,20 @@ getFields.forEach(field => {
     fieldsId.push(field.getAttribute('id'));
 });
 
-ws.addEventListener('message', ({data}) => {
-    let parsedData = JSON.parse(data);
-    let key = parsedData;
+ws.addEventListener('message', msg => {
+    try {
+        let parsedData = JSON.parse(msg.data);
 
-    if ('pTimer' in parsedData) {
-        updateTimer(parsedData['pTimer']);
-    };
+        if ('pTimer' in parsedData) {
+            updateTimer(parsedData['pTimer']);
+        };
 
-    if ('placar' in parsedData) {
-        updatePlacar(parsedData['placar']);
-    };
+        if ('placar' in parsedData) {
+            updatePlacar(parsedData['placar']);
+        };
+    } catch (error) {
+        console.log(`An error has occurred: ${error.message}`);
+    }
 });
 
 function updatePlacar(values) {
@@ -32,8 +35,6 @@ function updatePlacar(values) {
 };
 
 function updateTimer(values) {
-    console.log(values);
-
     ['paused', 'running', 'stopped'].forEach(status => {
         statusDisplay.classList.remove(status);
     });
