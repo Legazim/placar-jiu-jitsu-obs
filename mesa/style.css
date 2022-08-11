@@ -10,6 +10,7 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 700;
     line-height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -174,4 +175,12 @@ p {
 
 .set-time:hover {
     text-decoration: underline;
+}
+
+.ponto:hover,
+.van > *:not(.label):hover,
+.pun > *:not(.label):hover,
+.counter:hover,
+.set-time:hover {
+    cursor: pointer;
 }

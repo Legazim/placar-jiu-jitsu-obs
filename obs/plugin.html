@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placar</title>
-    <script defer src="../connection/connect.js"></script>
-    <script defer src="handler.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="../connection/websocket_connect.js"></script>
+    <script defer src="listenner_connection.js"></script>
+    <script defer src="interaction.js"></script>
 </head>
 
 <body>
-    <section>
+    <section class="placar">
         <div class="timer">
             <p id="time-status" class="status">Parado</p>
             <div class="counter">
@@ -20,10 +22,21 @@
                 </p>
             </div>
         </div>
-
         <div class="competidor blue">
             <div>
+                <div class="nome">
+                    <span class="nome-lutador">João Vitor santos</span>
+                    <br>
+                    <div class="extras">
+                        <span class="nome-equipe">(Striker)</span>
+                        <span id="bstatus" class="status-final">0</span>
+                    </div>
+                </div>
                 <div class="pontos">
+                    <div class="total">
+
+                        <p id="bt" class="-js-get-id total-ponto">00</p>
+                    </div>
                     <!-- <p id="bs4" class="-js-get-id ponto">00</p>
                         <p id="bs3" class="-js-get-id ponto">00</p>
                         <p id="bs2" class="-js-get-id ponto">00</p> -->
@@ -32,21 +45,26 @@
                             <span id="bv" class="-js-get-id display">00</span>
                         </p>
                         <p class="pun">
-                            <span id="bp" class="-js-get-id display">00</span>
+                            <span id="bp" class="-js-get-id display">0</span>
                         </p>
                     </div>
                 </div>
-                <div class="total">
-                    <!-- <p id="bstatus" class="status-final">0</p> -->
-                    <p id="bt" class="-js-get-id total-ponto">00</p>
-                </div>
             </div>
         </div>
-
-
         <div class="competidor white">
             <div>
+                <div class="nome">
+                    <span class="nome-lutador">Carlinhos das Quantas</span>
+                    <br>
+                    <div class="extras">
+                        <span class="nome-equipe">(Nova União)</span>
+                        <span id="wstatus" class="status-final">0</span>
+                    </div>
+                </div>
                 <div class="pontos">
+                    <div class="total">
+                        <p id="wt" class="-js-get-id total-ponto">00</p>
+                    </div>
                     <!-- <p id="ws4" class="-js-get-id ponto">00</p>
                     <p id="ws3" class="-js-get-id ponto">00</p>
                     <p id="ws2" class="-js-get-id ponto">00</p> -->
@@ -55,16 +73,12 @@
                             <span id="wv" class="-js-get-id display">00</span>
                         </p>
                         <p class="pun">
-                            <span id="wp" class="-js-get-id display">00</span>
+                            <span id="wp" class="-js-get-id display">0</span>
                         </p>
                     </div>
                 </div>
-                <div class="total">
-                    <!-- <p id="wstatus" class="status-final">0</p> -->
-                    <p id="wt" class="-js-get-id total-ponto">00</p>
-                </div>
+
             </div>
-        </div>
         </div>
     </section>
 

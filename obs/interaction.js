@@ -9,22 +9,6 @@ getFields.forEach(field => {
     fieldsId.push(field.getAttribute('id'));
 });
 
-ws.addEventListener('message', msg => {
-    try {
-        let parsedData = JSON.parse(msg.data);
-
-        if ('pTimer' in parsedData) {
-            updateTimer(parsedData['pTimer']);
-        };
-
-        if ('placar' in parsedData) {
-            updatePlacar(parsedData['placar']);
-        };
-    } catch (error) {
-        console.log(`An error has occurred: ${error.message}`);
-    }
-});
-
 function updatePlacar(values) {
     fieldsId.forEach(id => {
         let element = document.getElementById(id)
@@ -43,7 +27,34 @@ function updateTimer(values) {
     ssCounter.textContent = addZeroes(values.ss, 2);
 
     statusDisplay.textContent = values.timerStatus.text;
+
     statusDisplay.classList.add(values.timerStatus.status);
+};
+
+function declareWinner(id, pun = false) {
+    removeWinner();
+    if (pun) {
+        document.getElementById(`${id}status`).textContent = 'Desclassificado';
+        document.getElementById(`${id}status`).classList.add('show');
+    } else if (id == 'empate') {
+        document.getElementById('wstatus').textContent = 'Empate';
+        document.getElementById('bstatus').textContent = 'Empate';
+        document.getElementById('wstatus').classList.add('show');
+        document.getElementById('bstatus').classList.add('show');
+    } else {
+        document.getElementById(`${id}status`).textContent = 'Vencedor';
+        document.getElementById(`${id}status`).classList.add('show');
+    };
+
+    if (id == 'none') {
+        removeWinner();
+    };
+};
+
+function removeWinner() {
+    ['w', 'b'].forEach(cor => {
+        document.getElementById(`${cor}status`).classList.remove('show');
+    });
 };
 
 function addZeroes(num, len) {

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* outline: 1px dotted lime; */
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 1.3rem;
+    font-family: 'Oswald', sans-serif;
+}
+
+.placar {
+    --margin-size: 1.5em;
+    margin: var(--margin-size);
+    width: 15em;
+    border-radius: .2em;
+    overflow: hidden;
+    background-color: gainsboro;
+    transition: 300ms ease-in-out;
+}
+
+.placar.off {
+    transform: translate(calc(-100% - var(--margin-size)));
+}
+
+.timer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.3em;
+    padding-right: 0.3em;
+}
+
+.counter {
+    width: 6ch;
+    text-align: center;
+}
+
+.competidor > * {
+    /* padding-bottom: .3em; */
+    padding-left: 0.3em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 100%;
+}
+
+.nome {
+    font-size: .8em;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nome-lutador {
+    line-height: 100%;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: .2em;
+}
+
+.nome-equipe {
+    font-size: .8em;
+    opacity: 0.5;
+    text-align: end;
+}
+
+.status {
+    width: 100%;
+    background-color: green;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}
+
+.paused,
+.stopped {
+    background-color: rgb(164, 0, 0);
+}
+
+.running {
+    background-color: green;
+}
+
+.pontos {
+    width: fit-content;
+    line-height: 100%;
+    padding-inline: 0.3em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    height: 100%;
+}
+
+.blue .pontos {
+    background-color: #3636ff;
+}
+
+.white .pontos {
+    background-color: gainsboro;
+}
+
+.total {
+    min-width: 2ch;
+    text-align: right;
+    font-size: 2.5em;
+    line-height: 100%;
+    padding-bottom: .1em;
+}
+
+.v-p {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+}
+
+.pun {
+    width: 100%;
+    text-align: center;
+    color: #b00202;
+    filter:
+        drop-shadow(0 0 4px #ffffffa1);
+}
+
+.status-final {
+    color: #6b6969;
+    opacity: 0;
+}
+
+.status-final.show {
+    opacity: 1;
+}
