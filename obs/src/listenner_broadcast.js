@@ -1,7 +1,8 @@
 const bc = new BroadcastChannel('controller');
 
 // Handle incoming messages
-bc.addEventListener('message', msg => {
+bc.addEventListener('message', (msg) => {
+    let broadcastData = msg.data
     console.log(broadcastData);
 
     if ('show' in broadcastData) {

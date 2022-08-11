@@ -4,15 +4,15 @@ ws.addEventListener('message', msg => {
         console.log(parsedData);
 
         if ('pTimer' in parsedData) {
-            updateTimer(parsedData['pTimer']);
+            updateTimer(parsedData.pTimer);
         };
 
         if ('placar' in parsedData) {
-            updatePlacar(parsedData['placar']);
+            updatePlacar(parsedData.placar);
         };
 
         if ('winner' in parsedData) {
-            declareWinner(parsedData['winner'], parsedData['pun'])
+            declareWinner(parsedData.winner, parsedData.pun)
         }
     } catch (error) {
         console.log(`An error has occurred: ${error.message}`);

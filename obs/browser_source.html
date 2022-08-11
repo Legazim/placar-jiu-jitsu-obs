@@ -11,13 +11,13 @@
 
     <!-- Websocket connection -->
     <script defer src="../connection/websocket_connect.js"></script>
+    <script src="src/listenner_broadcast.js"></script>
 
     <!-- Script -->
     <script defer src="src/interaction.js"></script>
 
         <!-- Handle websocket and broadcast inputs -->
         <script defer src="src/listenner_connection.js"></script>
-        <script src="src/listenner_broadcast.js"></script>
 </head>
 
 <body>
@@ -33,10 +33,10 @@
         <div class="competidor blue">
             <div>
                 <div class="nome">
-                    <span id='bname' class="nome-lutador">João Vitor santos</span>
+                    <span id='bname' class="nome-lutador"></span>
                     <br>
                     <div class="extras">
-                        <span id="bteam" class="nome-equipe">(Striker)</span>
+                        <span id="bteam" class="nome-equipe"></span>
                         <span id="bstatus" class="status-final">0</span>
                     </div>
                 </div>
@@ -62,10 +62,10 @@
         <div class="competidor white">
             <div>
                 <div class="nome">
-                    <span id='wname'class="nome-lutador">Carlinhos das Quantas</span>
+                    <span id='wname'class="nome-lutador"></span>
                     <br>
                     <div class="extras">
-                        <span id="wteam" class="nome-equipe">(Nova União)</span>
+                        <span id="wteam" class="nome-equipe"></span>
                         <span id="wstatus" class="status-final">0</span>
                     </div>
                 </div>
@@ -88,6 +88,17 @@
 
             </div>
         </div>
+    </section>
+
+    <section>
+        <div class="carrosel-wrapper">
+            <div class="carrosel-container">
+                 <div class="carrosel-slider"></div>
+                 <button class="prev carrosel__btn--style"></button>
+                 <button class="next carrosel__btn--style"></button>
+            </div>
+            <div class="circle-container"></div>
+          </div>
     </section>
 
 </body>
