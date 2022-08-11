@@ -16,7 +16,7 @@ body {
     font-family: 'Oswald', sans-serif;
 }
 
-.placar {
+.scoreboard {
     --margin-size: 1.5em;
     margin: var(--margin-size);
     width: 15em;
@@ -26,7 +26,7 @@ body {
     transition: 300ms ease-in-out;
 }
 
-.placar.off {
+.scoreboard.off {
     transform: translate(calc(-100% - var(--margin-size)));
 }
 
