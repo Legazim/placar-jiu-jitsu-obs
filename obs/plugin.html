@@ -6,14 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placar</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/plugin_style.css">
+
+    <!-- Websocket connection -->
     <script defer src="../connection/websocket_connect.js"></script>
-    <script defer src="listenner_connection.js"></script>
-    <script defer src="interaction.js"></script>
+
+    <!-- Script -->
+    <script defer src="src/interaction.js"></script>
+
+        <!-- Handle websocket and broadcast inputs -->
+        <script defer src="src/listenner_connection.js"></script>
+        <script src="src/listenner_broadcast.js"></script>
 </head>
 
 <body>
-    <section class="placar">
+    <section id="scoreboard" class="scoreboard">
         <div class="timer">
             <p id="time-status" class="status">Parado</p>
             <div class="counter">
@@ -25,10 +33,10 @@
         <div class="competidor blue">
             <div>
                 <div class="nome">
-                    <span class="nome-lutador">João Vitor santos</span>
+                    <span id='bname' class="nome-lutador">João Vitor santos</span>
                     <br>
                     <div class="extras">
-                        <span class="nome-equipe">(Striker)</span>
+                        <span id="bteam" class="nome-equipe">(Striker)</span>
                         <span id="bstatus" class="status-final">0</span>
                     </div>
                 </div>
@@ -54,10 +62,10 @@
         <div class="competidor white">
             <div>
                 <div class="nome">
-                    <span class="nome-lutador">Carlinhos das Quantas</span>
+                    <span id='wname'class="nome-lutador">Carlinhos das Quantas</span>
                     <br>
                     <div class="extras">
-                        <span class="nome-equipe">(Nova União)</span>
+                        <span id="wteam" class="nome-equipe">(Nova União)</span>
                         <span id="wstatus" class="status-final">0</span>
                     </div>
                 </div>

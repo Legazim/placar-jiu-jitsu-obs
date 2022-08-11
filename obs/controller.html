@@ -1,14 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controller</title>
 </head>
+
 <body>
+    <label for="placar">Mostrar placar</label>
+    <input type="checkbox" id="mostrar-placar" checked>
+
+    <form action="post" id="informacoes">
+        <div class="blue">
+            <label>Lutador lado azul</label>
+            <input id="blue-name" type="text" placeholder="Nome">
+            <input id="blue-team" type="text" placeholder="Equipe" list="equipes">
+        </div>
+
+        <div class="white">
+            <label>Lutador lado branco</label>
+            <input id="white-name" type="text" placeholder="Nome">
+            <input id="white-team" type="text" placeholder="Equipe" list="equipes">
+        </div>
+
+        <button type="submit">Alterar nomes</button>
+    </form>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 1em;
+            background-color: gainsboro;
+        }
+
+        form>* {
+            display: flex;
+            flex-direction: column;
+            gap: .2rem;
+            margin-top: 1rem;
+        }
+
+        input {
+            border: 1px solid black;
+            padding: .5em;
+        }
+
+        button {
+            margin-top: 1rem;
+            background-color: darkcyan;
+            color: white;
+            font-weight: 400;
+            padding: 0.4rem 1rem;
+            border: 1px solid black;
+        }
+    </style>
+
     <script>
-        const br = new BroadcastChannel('controller');
+        const bc = new BroadcastChannel('controller');
+
+        const checkbox = document.getElementById('mostrar-placar')
+        const form = document.getElementById('informacoes');
+
+        checkbox.addEventListener('change', (event) => {
+            mostrar = event.currentTarget.checked ? { 'show': true } : { 'show': false };
+            bc.postMessage(mostrar);
+        });
+
+        form.addEventListener('submit', evt => {
+            evt.preventDefault()
+
+            let val = {
+                'scoreboardInput': {
+                    'blue': {
+                        'name': document.getElementById('blue-name').value,
+                        'team': document.getElementById('blue-team').value,
+                    },
+                    'white': {
+                        'name': document.getElementById('white-name').value,
+                        'team': document.getElementById('white-team').value
+                    }
+                }
+            }
+            bc.postMessage(val);
+        })
+
     </script>
 </body>
+
 </html>
