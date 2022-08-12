@@ -4,6 +4,7 @@ const bc = new BroadcastChannel('controller');
 bc.addEventListener('message', (msg) => {
     let broadcastData = msg.data
     console.log(broadcastData);
+    console.log(broadcastData);
 
     if ('show' in broadcastData) {
         scoreboardState(broadcastData)

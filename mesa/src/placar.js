@@ -103,6 +103,16 @@ fieldsId.forEach(id => {
             };
         };
 
+        if (isConnected) {
+            ws.send(JSON.stringify({
+                    'point': {
+                        'color':id[0],
+                        'type': clicked,
+                        'click': clickType(click)
+                    }
+            }));
+        };
+
         sumTotal();
 
         if (pTimer.timerStatus.status == 'Tempo esgotado') {
