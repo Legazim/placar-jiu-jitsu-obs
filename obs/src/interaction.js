@@ -1,21 +1,38 @@
+const slider = document.querySelector('.carrousel-slider');
 const statusDisplay = document.getElementById('time-status');
 const counter = document.getElementById('counter');
 const mmCounter = document.getElementById('minutes');
 const ssCounter = document.getElementById('seconds');
+var index = 0;
+var sponsors = [];
+var fieldsId = [];
+var sponsorInterval;
 
-fieldsId = [];
+for (let i = 1; i <= 12; i++) {
+    sponsors.push(`sponsors/${i}.jpg`)
+}
+
+
 const getFields = document.querySelectorAll('.-js-get-id');
 getFields.forEach(field => {
     fieldsId.push(field.getAttribute('id'));
 });
 
+insertSponsors();
+function loopSponsors() {
+    sponsorInterval = setInterval(() => {
+        nextSponsor()
+    }, 10000);
+}
+loopSponsors()
+
 function updatePlacar(values) {
     fieldsId.forEach(id => {
-        let element = document.getElementById(id)
-        let content = values[id[0]][id.slice([-1])]
+        let element = document.getElementById(id);
+        let content = values[id[0]][id.slice([-1])];
 
-        element.textContent = addZeroes(content, 2)
-    })
+        element.textContent = addZeroes(content, 2);
+    });
 };
 
 function updateTimer(values) {
@@ -66,4 +83,31 @@ function addZeroes(num, len) {
         counter++;
     };
     return numberWithZeroes;
+};
+
+function insertSponsors() {
+    for (let i = 0; i < sponsors.length; i++) {
+        let html = `<img class="img-item img-item${i}" src="${sponsors[i]}"/>`
+        slider.insertAdjacentHTML('beforeend', html)
+    };
+};
+
+function nextSponsor() {
+    let sponsors = document.querySelectorAll('.img-item')
+    index++;
+    if (index <= sponsors.length - 1) {
+        changeSponsor(index);
+    } else {
+        index = 0;
+        changeSponsor(0);
+    };
+};
+
+function changeSponsor(index) {
+    let images = document.querySelectorAll(`.img-item`);
+    let selected = document.querySelector(`.img-item${index}`);
+    images.forEach(img => {
+        img.classList.add('off')
+    });
+    selected.classList.remove('off')
 };

@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placar</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="src/plugin_style.css">
-
     <!-- Websocket connection -->
     <script defer src="../connection/websocket_connect.js"></script>
-    <script src="src/listenner_broadcast.js"></script>
 
     <!-- Script -->
     <script defer src="src/interaction.js"></script>
 
-        <!-- Handle websocket and broadcast inputs -->
-        <script defer src="src/listenner_connection.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/style.css">
+
+    <!-- Handle websocket and broadcast inputs -->
+    <script defer src="src/listenner_broadcast.js"></script>
+    <script defer src="src/listenner_connection.js"></script>
 </head>
 
 <body>
@@ -62,7 +62,7 @@
         <div class="competidor white">
             <div>
                 <div class="nome">
-                    <span id='wname'class="nome-lutador"></span>
+                    <span id='wname' class="nome-lutador"></span>
                     <br>
                     <div class="extras">
                         <span id="wteam" class="nome-equipe"></span>
@@ -90,15 +90,8 @@
         </div>
     </section>
 
-    <section>
-        <div class="carrosel-wrapper">
-            <div class="carrosel-container">
-                 <div class="carrosel-slider"></div>
-                 <button class="prev carrosel__btn--style"></button>
-                 <button class="next carrosel__btn--style"></button>
-            </div>
-            <div class="circle-container"></div>
-          </div>
+    <section class="carrousel-container">
+            <div class="carrousel-slider"></div>
     </section>
 
 </body>

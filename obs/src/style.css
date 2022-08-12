@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
 
+:root {
+    --margin-size: 1.5em;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     border: 0;
-    /* outline: 1px dotted lime; */
 }
 
 body {
@@ -14,10 +17,10 @@ body {
     overflow: hidden;
     font-size: 1.3rem;
     font-family: 'Oswald', sans-serif;
+    background: radial-gradient(black, transparent);
 }
 
 .scoreboard {
-    --margin-size: 1.5em;
     margin: var(--margin-size);
     width: 15em;
     border-radius: .2em;
@@ -142,4 +145,30 @@ body {
 
 .status-final.show {
     opacity: 1;
+}
+
+.carrousel-container {
+    width: 8em;
+    height: 6em;
+    position: fixed;
+    bottom: var(--margin-size);
+    right: var(--margin-size);
+    border-radius: 0.3em;
+    overflow: hidden;
+}
+
+.carrousel-slider {
+    display: grid;
+}
+
+.off {
+    opacity: 0;
+}
+
+.carrousel-container .carrousel-slider .img-item {
+    transition: 500ms ease-in-out 200ms;
+    width: 100%;
+    height: 100%;
+    grid-column: 1;
+    grid-row: 1;
 }
