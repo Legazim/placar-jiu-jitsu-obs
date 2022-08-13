@@ -9,8 +9,10 @@
 </head>
 
 <body>
-    <label for="placar">Mostrar placar</label>
-    <input type="checkbox" id="mostrar-placar" checked>
+    <div>
+        <label>Mostrar placar</label>
+        <input type="checkbox" id="mostrar-placar" checked>
+    </div>
 
     <form action="post" id="informacoes">
         <div class="blue">
@@ -27,6 +29,16 @@
 
         <button type="submit">Alterar nomes</button>
     </form>
+
+    <div>
+        <label>Mostrar patrocínios</label>
+        <input type="checkbox" id="mostrar-patrocinios" checked>
+    </div>
+
+    <div>
+        <label>Mostrar pontos marcados (Pop up)</label>
+        <input type="checkbox" id="mostrar-pop-up" checked>
+    </div>
 
     <style>
         * {
@@ -61,16 +73,32 @@
             padding: 0.4rem 1rem;
             border: 1px solid black;
         }
+
+        div {
+            margin-top: 1rem;
+        }
     </style>
 
     <script>
         const bc = new BroadcastChannel('controller');
 
-        const checkbox = document.getElementById('mostrar-placar')
+        const checkboxPlacar = document.getElementById('mostrar-placar')
+        const checkboxPatrocinios = document.getElementById('mostrar-patrocinios')
+        const checkboxPopUp = document.getElementById('mostrar-pop-up')
         const form = document.getElementById('informacoes');
 
-        checkbox.addEventListener('change', (event) => {
-            mostrar = event.currentTarget.checked ? { 'show': true } : { 'show': false };
+        checkboxPlacar.addEventListener('change', (event) => {
+            let mostrar = event.currentTarget.checked ? { 'showPlacar': true } : { 'showPlacar': false };
+            bc.postMessage(mostrar);
+        });
+
+        checkboxPatrocinios.addEventListener('change', (event) => {
+            let mostrar = event.currentTarget.checked ? { 'showPatrocinios': true } : { 'showPatrocinios': false };
+            bc.postMessage(mostrar);
+        });
+
+        checkboxPopUp.addEventListener('change', (event) => {
+            let mostrar = event.currentTarget.checked ? { 'showPopUp': true } : { 'showPopUp': false };
             bc.postMessage(mostrar);
         });
 

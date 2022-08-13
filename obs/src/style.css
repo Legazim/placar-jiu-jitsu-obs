@@ -163,6 +163,7 @@ body {
 }
 
 .carrousel-slider {
+    transition: 500ms ease-in-out 200ms;
     display: grid;
 }
 

@@ -4,23 +4,48 @@ const bc = new BroadcastChannel('controller');
 bc.addEventListener('message', (msg) => {
     let broadcastData = msg.data
     console.log(broadcastData);
-    console.log(broadcastData);
 
-    if ('show' in broadcastData) {
+    if ('showPlacar' in broadcastData) {
         scoreboardState(broadcastData)
     }
 
     if ('scoreboardInput' in broadcastData) {
         updateNames(broadcastData.scoreboardInput)
     }
+
+    if ('showPatrocinios' in broadcastData) {
+        sponsorsState(broadcastData)
+    }
+
+    if ('showPopUp' in broadcastData) {
+        popUpState(broadcastData)
+    }
 });
 
 function scoreboardState(data) {
     const scoreboard = document.getElementById('scoreboard')
-    if (data.show == true) {
+    if (data.showPlacar == true) {
         scoreboard.classList.remove('off')
     } else {
         scoreboard.classList.add('off')
+    }
+}
+
+function sponsorsState(data) {
+    let sponsors = document.getElementById('carrousel')
+    if (data.showPatrocinios == true) {
+        sponsors.style.opacity = 1
+    } else {
+        sponsors.style.opacity = 0
+    }
+}
+
+function popUpState(data) {
+    let popUp = document.getElementById('pop-up');
+    if (data.showPopUp == true) {
+        popUp.style.opacity = 1
+    } else {
+        popUp.style.opacity = 0
     }
 }
 
