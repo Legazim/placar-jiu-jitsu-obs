@@ -105,11 +105,11 @@ fieldsId.forEach(id => {
 
         if (isConnected) {
             ws.send(JSON.stringify({
-                    'point': {
-                        'color':id[0],
-                        'type': clicked,
-                        'click': clickType(click)
-                    }
+                'point': {
+                    'color':id[0],
+                    'type': clicked,
+                    'click': clickType(click)
+                }
             }));
         };
 
@@ -158,6 +158,14 @@ function timer() {
             timesUp();
         };
     };
+    if (isConnected) {
+        ws.send(JSON.stringify({
+            'counter': {
+                'ss': pTimer.ss,
+                'mm': pTimer.mm
+            }
+        }));
+    };
     updateTimerDOM();
 };
 
@@ -173,6 +181,19 @@ function timerCommand(command) {
     } else if (!command.ctrlKey) {
         pauseTimer();
     };
+
+    if (isConnected) {
+        ws.send(JSON.stringify({
+            'counter': {
+                'ss': pTimer.ss,
+                'mm': pTimer.mm
+            },
+            'timerStatus': {
+                'timerRunning': pTimer.timerRunning,
+                'timerStatus': pTimer.timerStatus
+            }
+        }));
+    };
 };
 
 function redefineInitialTime() {
@@ -184,6 +205,18 @@ function redefineInitialTime() {
     pTimer.ss = Number(format[1]);
 
     updateTimerDOM();
+    if (isConnected) {
+        ws.send(JSON.stringify({
+            'counter': {
+                'ss': pTimer.ss,
+                'mm': pTimer.mm
+            },
+            'timerStatus': {
+                'timerRunning': pTimer.timerRunning,
+                'timerStatus': pTimer.timerStatus
+            }
+        }));
+    };
 };
 
 function timesUp() {
@@ -197,7 +230,13 @@ function timesUp() {
     updateTimerDOM();
     declareWinner(checkWinner());
     if (isConnected) {
-        ws.send(JSON.stringify({'winner': checkWinner()}));
+        ws.send(JSON.stringify({
+            'winner': checkWinner(),
+            'timerStatus': {
+                'timerRunning': pTimer.timerRunning,
+                'timerStatus': pTimer.timerStatus
+            }
+        }));
     };
 };
 
@@ -217,10 +256,6 @@ function updateTimerDOM() {
 
     statusDisplay.textContent = pTimer.timerStatus.text;
     statusDisplay.classList.add(pTimer.timerStatus.status);
-
-    if (isConnected == true) {
-        ws.send(JSON.stringify({pTimer}));
-    };
 };
 
 //  Placar funções
