@@ -1,0 +1,49 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 1em;
+    background-color: gainsboro;
+}
+
+form>* {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    margin-top: 1rem;
+}
+
+input {
+    border: 1px solid black;
+    padding: .5em;
+}
+
+button {
+    margin-top: 1rem;
+    background-color: darkcyan;
+    color: white;
+    font-weight: 400;
+    padding: 0.4rem 1rem;
+    border: 1px solid black;
+}
+
+.options {
+    display: inline;
+}
+
+div {
+    margin-top: 1rem;
+}
+
+.lutas {
+    width: 100%;
+}
+
+.lutas>* {
+    width: 100%;
+}
+

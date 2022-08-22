@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controller</title>
+    <script defer src="src/controller.js"></script>
+    <link rel="stylesheet" href="src/controller_style.css">
 </head>
 
 <body>
@@ -13,22 +15,6 @@
         <label>Mostrar placar</label>
         <input type="checkbox" id="mostrar-placar" checked>
     </div>
-
-    <form action="post" id="informacoes">
-        <div class="blue">
-            <label>Lutador lado azul</label>
-            <input id="blue-name" type="text" placeholder="Nome">
-            <input id="blue-team" type="text" placeholder="Equipe" list="equipes">
-        </div>
-
-        <div class="white">
-            <label>Lutador lado branco</label>
-            <input id="white-name" type="text" placeholder="Nome">
-            <input id="white-team" type="text" placeholder="Equipe" list="equipes">
-        </div>
-
-        <button type="submit">Alterar nomes</button>
-    </form>
 
     <div>
         <label>Mostrar patrocínios</label>
@@ -40,87 +26,33 @@
         <input type="checkbox" id="mostrar-pop-up" checked>
     </div>
 
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            padding: 1em;
-            background-color: gainsboro;
-        }
+    <form action="post" id="informacoes">
+        <div class="blue">
+            <label>Lutador lado azul</label>
+            <input id="blue-name" type="text" placeholder="Nome">
+            <input id="blue-team" type="text" placeholder="Equipe">
+        </div>
 
-        form>* {
-            display: flex;
-            flex-direction: column;
-            gap: .2rem;
-            margin-top: 1rem;
-        }
+        <div class="white">
+            <label>Lutador lado branco</label>
+            <input id="white-name" type="text" placeholder="Nome">
+            <input id="white-team" type="text" placeholder="Equipe">
+        </div>
 
-        input {
-            border: 1px solid black;
-            padding: .5em;
-        }
+        <div class="options">
+            <button type="submit" id="alterNames">Alterar nomes</button>
+            <button id="saveNames">Salvar nomes</button>
+        </div>
+    </form>
 
-        button {
-            margin-top: 1rem;
-            background-color: darkcyan;
-            color: white;
-            font-weight: 400;
-            padding: 0.4rem 1rem;
-            border: 1px solid black;
-        }
+    <div class="lutas">
+        <label>Lutas salvas</label>
+        <select name="lutas" id="lutas" >
+        </select>
+    </div>
 
-        div {
-            margin-top: 1rem;
-        }
-    </style>
-
-    <script>
-        const bc = new BroadcastChannel('controller');
-
-        const checkboxPlacar = document.getElementById('mostrar-placar')
-        const checkboxPatrocinios = document.getElementById('mostrar-patrocinios')
-        const checkboxPopUp = document.getElementById('mostrar-pop-up')
-        const form = document.getElementById('informacoes');
-
-        checkboxPlacar.addEventListener('change', (event) => {
-            let mostrar = event.currentTarget.checked ? { 'showPlacar': true } : { 'showPlacar': false };
-            bc.postMessage(mostrar);
-        });
-
-        checkboxPatrocinios.addEventListener('change', (event) => {
-            let mostrar = event.currentTarget.checked ? { 'showPatrocinios': true } : { 'showPatrocinios': false };
-            bc.postMessage(mostrar);
-        });
-
-        checkboxPopUp.addEventListener('change', (event) => {
-            let mostrar = event.currentTarget.checked ? { 'showPopUp': true } : { 'showPopUp': false };
-            bc.postMessage(mostrar);
-        });
-
-        form.addEventListener('submit', evt => {
-            evt.preventDefault()
-
-            let val = {
-                'scoreboardInput': {
-                    'blue': {
-                        'name': document.getElementById('blue-name').value,
-                        'team': document.getElementById('blue-team').value,
-                    },
-                    'white': {
-                        'name': document.getElementById('white-name').value,
-                        'team': document.getElementById('white-team').value
-                    }
-                }
-            }
-            bc.postMessage(val);
-        })
-
-    </script>
+    <button id="reset">Apagar lutas salvas</button>
 </body>
 
 </html>

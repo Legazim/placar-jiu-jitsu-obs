@@ -13,7 +13,6 @@ var fieldsId = [];
 ws.addEventListener('message', msg => {
     try {
         let parsedData = JSON.parse(msg.data);
-        console.log(parsedData);
 
         if ('counter' in parsedData) {
             updateCounter(parsedData.counter)
