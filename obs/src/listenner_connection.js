@@ -90,18 +90,19 @@ function showPoint(data) {
     }
 
     if (data.click) {
-        increment.textContent = (data.type == 'v' || data.type == 'p') ? '' : '+'
+        increment.textContent =
+            (data.type == 'v' || data.type == 'p') ? '' : '+';
     } else {
-        text.textContent += ' (Correção)'
-        increment.textContent = '-'
-    }
+        text.textContent += ' (Correção)';
+        increment.textContent = '-';
+    };
 
     popUp.classList.add('show')
 
     clearTimeout(popUpInterval)
     popUpInterval = setTimeout(() => {
-        popUp.classList.remove('show')
-    }, 2000)
+        popUp.classList.remove('show');
+    }, 2000);
 };
 
 function declareWinner(id, pun = false) {

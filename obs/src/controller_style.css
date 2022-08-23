@@ -31,6 +31,13 @@ button {
     border: 1px solid black;
 }
 
+.nomes,
+.nomes>* {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 .options {
     display: inline;
 }
@@ -39,11 +46,11 @@ div {
     margin-top: 1rem;
 }
 
-.lutas {
+#lutas {
+    padding: .5em;
     width: 100%;
 }
 
-.lutas>* {
-    width: 100%;
+.options {
+    display: inline;
 }
-
