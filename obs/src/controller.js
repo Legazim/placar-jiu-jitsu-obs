@@ -4,6 +4,7 @@ const checkboxPlacar = document.getElementById('mostrar-placar')
 const checkboxPatrocinios = document.getElementById('mostrar-patrocinios')
 const checkboxPopUp = document.getElementById('mostrar-pop-up')
 const form = document.getElementById('informacoes');
+const lutas = document.getElementById('lutas');
 
 checkboxPlacar.addEventListener('change', (event) => {
     let mostrar = event.currentTarget.checked ? {
@@ -32,19 +33,14 @@ checkboxPopUp.addEventListener('change', (event) => {
     bc.postMessage(mostrar);
 });
 
-form.addEventListener('submit', evt => {
-    evt.preventDefault();
-});
-
 document.getElementById('alterNames').onclick = () => {
-    alterNames()
+    bcAlterNames()
 }
 
-document.getElementById('reset').onclick = () => {
-    localStorage.clear();
-    document.querySelectorAll('.luta').forEach(luta => {
-        luta.remove()
-    })
+document.getElementById('apagarLuta').onclick = () => {
+    let selected = lutas.options[lutas.selectedIndex].value;
+    localStorage.removeItem(selected);
+    document.querySelector(`[value="${selected}"]`).remove()
 }
 
 Object.keys(localStorage).forEach(luta => {
@@ -58,8 +54,9 @@ document.getElementById('saveNames').onclick = () => {
         document.getElementById('white-team').value == ''
     ) { return };
 
+    let id = newId();
 
-    localStorage.setItem(`Luta_${localStorage.length + 1}`, JSON.stringify({
+    localStorage.setItem(id, JSON.stringify({
         'blue': {
             'name': document.getElementById('blue-name').value,
             'team': document.getElementById('blue-team').value,
@@ -70,19 +67,28 @@ document.getElementById('saveNames').onclick = () => {
         }
     }))
 
-    appendLuta(`Luta_${localStorage.length}`)
-    document.getElementById('lutas').value =`Luta_${localStorage.length}`;
+    appendLuta(id)
+    lutas.value = id;
 }
+
+lutas.addEventListener('change', () => {
+    let selected = lutas.options[lutas.selectedIndex].value;
+    let selectedLuta = JSON.parse(localStorage.getItem(selected));
+    document.getElementById('blue-name').value = selectedLuta.blue.name
+    document.getElementById('blue-team').value = selectedLuta.blue.team
+    document.getElementById('white-name').value = selectedLuta.white.name
+    document.getElementById('white-team').value = selectedLuta.white.team
+});
 
 function appendLuta(luta) {
     let opt = document.createElement('option')
     opt.value = luta;
     opt.classList.add('luta')
-    opt.innerHTML = `${luta}: ${JSON.parse(localStorage[luta])['blue']['name']} - ${JSON.parse(localStorage[luta])['white']['name']}`;
-    document.getElementById('lutas').appendChild(opt);
+    opt.innerHTML = `${JSON.parse(localStorage[luta])['blue']['name']} - ${JSON.parse(localStorage[luta])['white']['name']}`;
+    lutas.appendChild(opt);
 }
 
-function alterNames() {
+function bcAlterNames() {
     let val = {
         'scoreboardInput': {
             'blue': {
@@ -97,3 +103,15 @@ function alterNames() {
     };
     bc.postMessage(val);
 }
+
+function newId() {
+    let id = Math.random().toString(36).substring(2, 18);
+    if (localStorage.length != 0) {
+        Object.keys(localStorage).forEach(existentId => {
+            if (id == existentId) {
+                id = newId();
+            }
+        });
+    };
+    return id
+};

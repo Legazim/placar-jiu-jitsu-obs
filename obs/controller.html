@@ -26,33 +26,34 @@
         <input type="checkbox" id="mostrar-pop-up" checked>
     </div>
 
-
-    <form action="post" id="informacoes">
+    <div class="nomes">
         <div class="blue">
             <label>Lutador lado azul</label>
             <input id="blue-name" type="text" placeholder="Nome">
             <input id="blue-team" type="text" placeholder="Equipe">
         </div>
-
         <div class="white">
             <label>Lutador lado branco</label>
             <input id="white-name" type="text" placeholder="Nome">
             <input id="white-team" type="text" placeholder="Equipe">
         </div>
+    </div>
 
-        <div class="options">
-            <button type="submit" id="alterNames">Alterar nomes</button>
-            <button id="saveNames">Salvar nomes</button>
-        </div>
-    </form>
+    <div class="options">
+        <button type="submit" id="alterNames">Alterar nomes</button>
+        <button id="saveNames">Salvar nomes</button>
+    </div>
 
     <div class="lutas">
         <label>Lutas salvas</label>
-        <select name="lutas" id="lutas" >
+        <select name="lutas" id="lutas">
+            <option value="" disabled selected hidden>Selecionar luta salva</option>
         </select>
     </div>
 
-    <button id="reset">Apagar lutas salvas</button>
+    <div class="options">
+        <button id="apagarLuta">Apagar luta selecionada</button>
+    </div>
 </body>
 
 </html>
