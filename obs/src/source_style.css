@@ -7,7 +7,7 @@
     --clr-pun: #b00202;
     --clr-background-w: #ededed;
     --clr-background-b: #3636ff;
-    --border-radius: 0.3rem
+    --border-radius: 0.3rem;
 }
 
 * {
@@ -50,7 +50,7 @@ body {
     text-align: center;
 }
 
-.competitor>* {
+.competitor > * {
     padding-left: 0.3em;
     display: flex;
     align-items: center;
@@ -60,7 +60,7 @@ body {
 }
 
 .nome {
-    font-size: .8em;
+    font-size: 0.8em;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -76,11 +76,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: .2em;
+    padding-right: 0.2em;
 }
 
 .nome-equipe {
-    font-size: .8em;
+    font-size: 0.8em;
     opacity: 0.5;
     text-align: end;
 }
@@ -126,7 +126,7 @@ body {
     text-align: right;
     font-size: 2.5em;
     line-height: 100%;
-    padding-bottom: .1em;
+    padding-bottom: 0.1em;
 }
 
 .v-p {
@@ -139,8 +139,7 @@ body {
     width: 100%;
     text-align: center;
     color: var(--clr-pun);
-    filter:
-        drop-shadow(0 0 4px #ffffffa1);
+    filter: drop-shadow(0 0 4px #ffffffa1);
 }
 
 .status-final {
@@ -211,8 +210,7 @@ body {
     background-color: var(--clr-background-w);
     padding: 0.4em;
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    box-shadow:
-        inset 1.5em 0 0.625em -1.5em #909090;
+    box-shadow: inset 1.5em 0 0.625em -1.5em #909090;
 }
 
 .pop-up.show .text {

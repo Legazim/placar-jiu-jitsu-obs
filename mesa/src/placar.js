@@ -1,42 +1,41 @@
-fieldsId = [];
 isConnected = false;
 placar = {
-    'b': {
-        '2': 0,
-        '3': 0,
-        '4': 0,
-        'v': 0,
-        'p': 0,
-        'min': {
-            '2': false,
-            'v': false
+    b: {
+        2: 0,
+        3: 0,
+        4: 0,
+        v: 0,
+        p: 0,
+        min: {
+            2: false,
+            v: false,
         },
-        't': 0
+        t: 0,
     },
-    'w': {
-        '2': 0,
-        '3': 0,
-        '4': 0,
-        'v': 0,
-        'p': 0,
-        'min': {
-            '2': false,
-            'v': false
+    w: {
+        2: 0,
+        3: 0,
+        4: 0,
+        v: 0,
+        p: 0,
+        min: {
+            2: false,
+            v: false,
         },
-        't': 0
-    }
+        t: 0,
+    },
 };
 
 var pTimer = {
-    'mmInitialTime': 10,
-    'ssInitialTime': 00,
-    'mm': 10,
-    'ss': 00,
-    'timerRunning': false,
-    'timerStatus': {
-        'text': 'Parado',
-        'status': 'stopped'
-    }
+    mmInitialTime: 10,
+    ssInitialTime: 00,
+    mm: 10,
+    ss: 00,
+    timerRunning: false,
+    timerStatus: {
+        text: 'Parado',
+        status: 'stopped',
+    },
 };
 
 // Timer
@@ -50,13 +49,13 @@ var milesimo = 0;
 
 updateTimerDOM();
 
-document.body.onkeydown = keyPressed => {
+document.body.onkeydown = (keyPressed) => {
     if (keyPressed.code == 'Space') {
         timerCommand(keyPressed);
-    };
+    }
 };
 
-counter.onclick = click => {
+counter.onclick = (click) => {
     timerCommand(click);
 };
 
@@ -68,28 +67,30 @@ document.getElementById('set-time').onclick = () => {
     redefineInitialTime();
 };
 
-
+fieldsId = [];
 const getFields = document.querySelectorAll('.-js-get-id');
-getFields.forEach(field => {
+getFields.forEach((field) => {
     fieldsId.push(field.getAttribute('id'));
 });
 
-fieldsId.forEach(id => {
+fieldsId.forEach((id) => {
     let element = document.getElementById(id);
     let clicked = id.slice([-1]);
-    element.onclick = click => {
+    element.onclick = (click) => {
         if (clickType(click)) {
             placar[id[0]][clicked]++;
 
             if (clicked == 'p') {
                 scorePunicao(id);
-            };
+            }
         } else if (placar[id[0]][clicked] != 0) {
             switch (clicked) {
                 case 'v':
                 case '2':
-                    if (placar[id[0]]['min'][clicked] &&
-                        placar[id[0]][clicked] == 1)
+                    if (
+                        placar[id[0]]['min'][clicked] &&
+                        placar[id[0]][clicked] == 1
+                    )
                         return;
                     placar[id[0]][clicked]--;
                     break;
@@ -100,18 +101,20 @@ fieldsId.forEach(id => {
                 default:
                     placar[id[0]][clicked]--;
                     break;
-            };
-        };
+            }
+        }
 
         if (isConnected) {
-            ws.send(JSON.stringify({
-                'point': {
-                    'color':id[0],
-                    'type': clicked,
-                    'click': clickType(click)
-                }
-            }));
-        };
+            ws.send(
+                JSON.stringify({
+                    point: {
+                        color: id[0],
+                        type: clicked,
+                        click: clickType(click),
+                    },
+                })
+            );
+        }
 
         sumTotal();
 
@@ -135,9 +138,9 @@ function startTimer() {
             clearInterval(cron);
             startTimer();
             timer();
-        };
+        }
     }, 100);
-};
+}
 
 function pauseTimer() {
     clearInterval(cron);
@@ -145,9 +148,7 @@ function pauseTimer() {
     pTimer.timerStatus.text = 'Pausa';
     pTimer.timerStatus.status = 'paused';
     updateTimerDOM();
-};
-
-
+}
 
 function timer() {
     pTimer.ss--;
@@ -156,48 +157,55 @@ function timer() {
         pTimer.mm--;
         if (pTimer.mm <= 0) {
             timesUp();
-        };
-    };
+        }
+    }
     if (isConnected) {
-        ws.send(JSON.stringify({
-            'counter': {
-                'ss': pTimer.ss,
-                'mm': pTimer.mm
-            }
-        }));
-    };
+        ws.send(
+            JSON.stringify({
+                counter: {
+                    ss: pTimer.ss,
+                    mm: pTimer.mm,
+                },
+            })
+        );
+    }
     updateTimerDOM();
-};
+}
 
 function timerCommand(command) {
     if (pTimer.timerRunning == false) {
         if (command.ctrlKey) {
             if (confirm('Deseja reiniciar o tempo e a contagem atual'));
-                removeWinner();
-                resetScoreAndTime();
+            removeWinner();
+            resetScoreAndTime();
         } else {
             startTimer();
         }
     } else if (!command.ctrlKey) {
         pauseTimer();
-    };
+    }
 
     if (isConnected) {
-        ws.send(JSON.stringify({
-            'counter': {
-                'ss': pTimer.ss,
-                'mm': pTimer.mm
-            },
-            'timerStatus': {
-                'timerRunning': pTimer.timerRunning,
-                'timerStatus': pTimer.timerStatus
-            }
-        }));
-    };
-};
+        ws.send(
+            JSON.stringify({
+                counter: {
+                    ss: pTimer.ss,
+                    mm: pTimer.mm,
+                },
+                timerStatus: {
+                    timerRunning: pTimer.timerRunning,
+                    timerStatus: pTimer.timerStatus,
+                },
+            })
+        );
+    }
+}
 
 function redefineInitialTime() {
-    format = prompt('Atualizar tempo',`${addZeroes(pTimer.mm, 2)}:${addZeroes(pTimer.ss, 2)}`);
+    format = prompt(
+        'Atualizar tempo',
+        `${addZeroes(pTimer.mm, 2)}:${addZeroes(pTimer.ss, 2)}`
+    );
     format = format != null ? format.split(':') : [pTimer.mm, pTimer.ss];
     format[1] = format[1] == undefined ? 00 : format[1];
 
@@ -206,18 +214,20 @@ function redefineInitialTime() {
 
     updateTimerDOM();
     if (isConnected) {
-        ws.send(JSON.stringify({
-            'counter': {
-                'ss': pTimer.ss,
-                'mm': pTimer.mm
-            },
-            'timerStatus': {
-                'timerRunning': pTimer.timerRunning,
-                'timerStatus': pTimer.timerStatus
-            }
-        }));
-    };
-};
+        ws.send(
+            JSON.stringify({
+                counter: {
+                    ss: pTimer.ss,
+                    mm: pTimer.mm,
+                },
+                timerStatus: {
+                    timerRunning: pTimer.timerRunning,
+                    timerStatus: pTimer.timerStatus,
+                },
+            })
+        );
+    }
+}
 
 function timesUp() {
     pTimer.mm = 0;
@@ -230,24 +240,26 @@ function timesUp() {
     updateTimerDOM();
     declareWinner(checkWinner());
     if (isConnected) {
-        ws.send(JSON.stringify({
-            'winner': checkWinner(),
-            'timerStatus': {
-                'timerRunning': pTimer.timerRunning,
-                'timerStatus': pTimer.timerStatus
-            }
-        }));
-    };
-};
+        ws.send(
+            JSON.stringify({
+                winner: checkWinner(),
+                timerStatus: {
+                    timerRunning: pTimer.timerRunning,
+                    timerStatus: pTimer.timerStatus,
+                },
+            })
+        );
+    }
+}
 
 function updateTimerDOM() {
     if (pTimer.timerStatus.status == 'stopped') {
         document.getElementById('set-time').classList.remove('hide');
     } else {
         document.getElementById('set-time').classList.add('hide');
-    };
+    }
 
-    ['paused', 'running', 'stopped'].forEach(status => {
+    ['paused', 'running', 'stopped'].forEach((status) => {
         statusDisplay.classList.remove(status);
     });
 
@@ -256,30 +268,30 @@ function updateTimerDOM() {
 
     statusDisplay.textContent = pTimer.timerStatus.text;
     statusDisplay.classList.add(pTimer.timerStatus.status);
-};
+}
 
 //  Placar funções
 function sumTotal() {
     let totalScore = {
-        'b': 0,
-        'w': 0
+        b: 0,
+        w: 0,
     };
 
-    fieldsId.forEach(id => {
+    fieldsId.forEach((id) => {
         let score = placar[id[0]][id.slice([-1])];
         if (!isNaN([id.slice([-1])])) {
             score = score * parseInt([id.slice([-1])]);
             totalScore[id[0]] += score;
-        };
+        }
     });
 
-    Object.keys(totalScore).forEach(key => {
+    Object.keys(totalScore).forEach((key) => {
         placar[key]['t'] = totalScore[key];
     });
-};
+}
 
 function updatePlacarDOM() {
-    fieldsId.forEach(id => {
+    fieldsId.forEach((id) => {
         let element = document.getElementById(id);
         let content = placar[id[0]][id.slice([-1])];
 
@@ -287,34 +299,34 @@ function updatePlacarDOM() {
             content = content * parseInt([id.slice([-1])]);
         } else {
             content = parseInt(placar[id[0]][id.slice([-1])]);
-        };
+        }
 
         element.textContent = addZeroes(content, 2);
     });
 
-    if (isConnected) {
-        ws.send(JSON.stringify({placar}));
-    };
-};
+    // if (isConnected) {
+    //     ws.send(JSON.stringify({ placar }));
+    // }
+}
 
 function addZeroes(num, len) {
     let numberWithZeroes = String(num);
     let counter = numberWithZeroes.length;
 
     while (counter < len) {
-        numberWithZeroes = "0" + numberWithZeroes;
+        numberWithZeroes = '0' + numberWithZeroes;
         counter++;
-    };
+    }
     return numberWithZeroes;
 }
 
 function clickType(event) {
     if (event.ctrlKey) return false;
     return true;
-};
+}
 
 function scorePunicao(id) {
-    let opponent = (id[0] == 'b') ? 'w' : 'b';
+    let opponent = id[0] == 'b' ? 'w' : 'b';
 
     switch (placar[id[0]]['p']) {
         case 2:
@@ -327,17 +339,17 @@ function scorePunicao(id) {
             break;
         case 4:
             declareWinner(id[0], true);
-            pauseTimer()
-            if (isConnected) {;
-                ws.send(JSON.stringify({'winner': id[0], 'pun': true}));
-            };
+            pauseTimer();
+            if (isConnected) {
+                ws.send(JSON.stringify({ winner: id[0], pun: true }));
+            }
         default:
             break;
-    };
-};
+    }
+}
 
 function removeScorePunicao(id) {
-    let opponent = (id[0] == 'b') ? 'w' : 'b';
+    let opponent = id[0] == 'b' ? 'w' : 'b';
 
     switch (placar[id[0]]['p']) {
         case 1:
@@ -351,16 +363,18 @@ function removeScorePunicao(id) {
             removeWinner();
         default:
             break;
-    };
-};
+    }
+}
 
 function checkWinner() {
     blue = placar['b'];
     white = placar['w'];
 
-    if (blue['t'] == white['t'] &&
+    if (
+        blue['t'] == white['t'] &&
         blue['v'] == white['v'] &&
-        blue['p'] == white['p']) {
+        blue['p'] == white['p']
+    ) {
         return 'empate';
     }
 
@@ -376,8 +390,8 @@ function checkWinner() {
         return 'b';
     } else if (blue['p'] > white['p']) {
         return 'w';
-    };
-};
+    }
+}
 
 function declareWinner(id, pun = false) {
     removeWinner();
@@ -392,17 +406,17 @@ function declareWinner(id, pun = false) {
     } else {
         document.getElementById(`${id}status`).textContent = 'Vencedor';
         document.getElementById(`${id}status`).classList.add('show');
-    };
-};
+    }
+}
 
 function removeWinner() {
     if (isConnected) {
-        ws.send(JSON.stringify({'winner': 'none'}));
+        ws.send(JSON.stringify({ winner: 'none' }));
     }
-    ['w', 'b'].forEach(cor => {
+    ['w', 'b'].forEach((cor) => {
         document.getElementById(`${cor}status`).classList.remove('show');
     });
-};
+}
 
 function resetScoreAndTime() {
     pTimer.timerRunning = false;
@@ -416,37 +430,37 @@ function resetScoreAndTime() {
     milesimo = 0;
 
     placar = {
-        'b': {
-            '2': 0,
-            '3': 0,
-            '4': 0,
-            'v': 0,
-            'p': 0,
-            'min': {
-                '2': false,
-                'v': false
+        b: {
+            2: 0,
+            3: 0,
+            4: 0,
+            v: 0,
+            p: 0,
+            min: {
+                2: false,
+                v: false,
             },
-            't': 0
+            t: 0,
         },
-        'w': {
-            '2': 0,
-            '3': 0,
-            '4': 0,
-            'v': 0,
-            'p': 0,
-            'min': {
-                '2': false,
-                'v': false
+        w: {
+            2: 0,
+            3: 0,
+            4: 0,
+            v: 0,
+            p: 0,
+            min: {
+                2: false,
+                v: false,
             },
-            't': 0
-        }
+            t: 0,
+        },
     };
 
     updateTimerDOM();
     updatePlacarDOM();
 }
 
-['resize', 'load', 'scroll'].forEach(evt => {
+['resize', 'load', 'scroll'].forEach((evt) => {
     window.addEventListener(evt, () => {
         setTimerDOMPosition();
     });
@@ -454,7 +468,9 @@ function resetScoreAndTime() {
 
 function setTimerDOMPosition() {
     let referenceRect = document.getElementById('bt').getBoundingClientRect();
-    let elementRect =  document.getElementById('time-status').getBoundingClientRect();
-    let distance = (referenceRect.right - elementRect.width);
+    let elementRect = document
+        .getElementById('time-status')
+        .getBoundingClientRect();
+    let distance = referenceRect.right - elementRect.width;
     document.documentElement.style.cssText = `--transform: ${distance}px`;
 }

@@ -16,4 +16,4 @@ ws.addEventListener('open', () => {
 ws.addEventListener('close', () => {
     console.log('Disconnected');
     isConnected = false;
-})
+});

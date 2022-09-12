@@ -10,16 +10,16 @@ body {
     background-color: gainsboro;
 }
 
-form>* {
+form > * {
     display: flex;
     flex-direction: column;
-    gap: .2rem;
+    gap: 0.2rem;
     margin-top: 1rem;
 }
 
 input {
     border: 1px solid black;
-    padding: .5em;
+    padding: 0.5em;
 }
 
 button {
@@ -32,10 +32,10 @@ button {
 }
 
 .nomes,
-.nomes>* {
+.nomes > * {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
 }
 
 .options {
@@ -47,7 +47,7 @@ div {
 }
 
 #lutas {
-    padding: .5em;
+    padding: 0.5em;
     width: 100%;
 }
 
