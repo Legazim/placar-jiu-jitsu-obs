@@ -63,8 +63,9 @@ function updatePlacar(values) {
     fieldsId.forEach((id) => {
         let element = document.getElementById(id);
         let content = values[id[0]][id.slice([-1])];
+        let len = id[1] == 'p' ? 1 : 2;
 
-        element.textContent = addZeroes(content, 2);
+        element.textContent = addZeroes(content, len);
     });
 }
 

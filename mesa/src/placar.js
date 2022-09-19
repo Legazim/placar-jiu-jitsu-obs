@@ -304,9 +304,9 @@ function updatePlacarDOM() {
         element.textContent = addZeroes(content, 2);
     });
 
-    // if (isConnected) {
-    //     ws.send(JSON.stringify({ placar }));
-    // }
+    if (isConnected) {
+        ws.send(JSON.stringify({ placar }));
+    }
 }
 
 function addZeroes(num, len) {
