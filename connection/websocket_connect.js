@@ -6,7 +6,7 @@ const PORT = 8082;
 
 var isConnected = false;
 
-const ws = new WebSocket(`ws://${IP_ADDR}:${PORT}`);
+var ws = new WebSocket(`ws://${IP_ADDR}:${PORT}`);
 
 ws.addEventListener('open', () => {
     console.log('Connected');

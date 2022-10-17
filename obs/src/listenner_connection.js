@@ -7,10 +7,42 @@ const divValue = document.getElementById('value');
 const popUp = document.getElementById('pop-up');
 const increment = document.getElementById('increment');
 const points = document.getElementById('points');
+const getFields = document.querySelectorAll('.-js-get-id');
 var popUpInterval;
 var fieldsId = [];
+var isConnected = false;
 
-ws.addEventListener('message', (msg) => {
+setConnection()
+
+getFields.forEach((field) => {
+    fieldsId.push(field.getAttribute('id'));
+});
+
+function setConnection(ip = 'localhost') {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const IP_ADDR = urlParams.has('ip') ? urlParams.get('ip') : ip;
+    const PORT = 8082;
+
+    const ws = new WebSocket(`ws://${IP_ADDR}:${PORT}`);
+
+    ws.addEventListener('open', () => {
+        console.log('Connected');
+        isConnected = true;
+    });
+
+    ws.addEventListener('close', () => {
+        console.log('Disconnected');
+        isConnected = false;
+    });
+
+    ws.addEventListener('message', (msg) => {
+        wsListener(msg)
+    });
+}
+
+function wsListener(msg) {
     try {
         let parsedData = JSON.parse(msg.data);
 
@@ -36,13 +68,7 @@ ws.addEventListener('message', (msg) => {
     } catch (error) {
         console.log(`An error has occurred: ${error.message}`);
     }
-});
-
-const getFields = document.querySelectorAll('.-js-get-id');
-
-getFields.forEach((field) => {
-    fieldsId.push(field.getAttribute('id'));
-});
+}
 
 function updateCounter(values) {
     mmCounter.textContent = addZeroes(values.mm, 2);

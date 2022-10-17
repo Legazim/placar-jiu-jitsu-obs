@@ -54,3 +54,7 @@ div {
 .options {
     display: inline;
 }
+
+.hidden {
+    display: none;
+}

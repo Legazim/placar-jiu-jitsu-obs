@@ -6,9 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browser source</title>
-    <!-- Websocket connection -->
-    <script defer src="../connection/websocket_connect.js"></script>
-
     <!-- Script -->
     <script defer src="src/interaction.js"></script>
 
@@ -16,8 +13,8 @@
     <link rel="stylesheet" href="src/source_style.css">
 
     <!-- Handle websocket and broadcast inputs -->
-    <script defer src="src/listenner_broadcast.js"></script>
     <script defer src="src/listenner_connection.js"></script>
+    <script defer src="src/listenner_broadcast.js"></script>
 </head>
 
 <body>
@@ -90,12 +87,12 @@
         </div>
     </section>
 
-    <section id="pop-up" class="pop-up">
+    <section id="pop-up" class="pop-up show">
         <div id="value" class="value">
-            <span id="increment"></span><span id="points"></span>
+            <span id="increment"></span>1<span id="points"></span>
         </div>
         <div id="pop-up-text" class="text">
-            <span></span>
+            <span>aaaa</span>
         </div>
     </section>
 

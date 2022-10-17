@@ -3,8 +3,24 @@ const bc = new BroadcastChannel('controller');
 const checkboxPlacar = document.getElementById('mostrar-placar');
 const checkboxPatrocinios = document.getElementById('mostrar-patrocinios');
 const checkboxPopUp = document.getElementById('mostrar-pop-up');
-const form = document.getElementById('informacoes');
 const lutas = document.getElementById('lutas');
+
+document.getElementById('label-ip').onclick = () => {
+    document.getElementById('ip-options').classList.remove('hidden')
+    document.getElementById('ip-status').innerHTML = '+'
+}
+
+document.getElementById('hide-ip').onclick = () => {
+    document.getElementById('ip-options').classList.add('hidden')
+    document.getElementById('ip-status').innerHTML = '-'
+}
+
+document.getElementById('submit-ip').onclick = () => {
+    let ip = document.getElementById('ip').value
+        ?  document.getElementById('ip').value
+        : '127.0.0.1'
+    bc.postMessage({IP: ip})
+}
 
 checkboxPlacar.addEventListener('change', (event) => {
     let mostrar = event.currentTarget.checked
