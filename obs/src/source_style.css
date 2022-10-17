@@ -183,7 +183,7 @@ body {
     bottom: var(--margin-size);
     left: var(--margin-size);
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: .4rem;
 }
 
@@ -207,6 +207,16 @@ body {
     width: fit-content;
     padding: 0.5em;
     border-radius: var(--border-radius);
+}
+
+.value.b {
+    background-color: var(--clr-background-b);
+    color: white;
+}
+
+.value.w {
+    background-color: var(--clr-background-w);
+    color: black;
 }
 
 .pop-up .text {

@@ -2,11 +2,6 @@ const statusDisplay = document.getElementById('time-status');
 const counter = document.getElementById('counter');
 const mmCounter = document.getElementById('minutes');
 const ssCounter = document.getElementById('seconds');
-const text = document.getElementById('pop-up-text');
-const divValue = document.getElementById('value');
-const popUp = document.getElementById('pop-up');
-const increment = document.getElementById('increment');
-const points = document.getElementById('points');
 const getFields = document.querySelectorAll('.-js-get-id');
 var popUpInterval;
 var fieldsId = [];
@@ -94,41 +89,51 @@ function updatePlacar(values) {
         element.textContent = addZeroes(content, len);
     });
 }
-
+const popUpWrapper = document.getElementById('pop-up-wrapper');
 function showPoint(data) {
-    divValue.style.backgroundColor = `var(--clr-background-${data.color})`;
-    divValue.style.color =
-        data.color == 'b' ? 'white' : (divValue.style.color = 'black');
-    points.textContent = isNaN(data.type) ? '1' : data.type;
-
+    var text, points, increment;
     switch (data.type) {
         case 'v':
-            text.textContent = 'Vantagem';
-            points.textContent = '1';
+            text = 'Vantagem';
+            points = '1';
             break;
         case 'p':
-            text.textContent = 'Punição';
-            points.textContent = '1';
+            text = 'Punição';
+            points = '1';
             break;
         default:
-            text.textContent = 'Pontos';
-            points.textContent = data.type;
+            text = 'Pontos';
+            points = data.type;
             break;
     }
 
     if (data.click) {
-        increment.textContent = data.type == 'v' || data.type == 'p' ? '' : '+';
+        increment = data.type == 'v' || data.type == 'p' ? '' : '+';
     } else {
-        text.textContent += ' (Correção)';
-        increment.textContent = '-';
+        text += ' (Correção)';
+        increment = '-';
     }
 
-    popUp.classList.add('show');
+    const popUp = document.createElement('div')
+    content = 
+        `<div id="value" class="value ${data.color}">
+            <span>${increment}</span><span id="points">${points}</span>
+        </div>
+        <div id="pop-up-text" class="text">
+            <span>${text}</span>
+        </div>`
+    popUp.innerHTML = content;
+    popUp.classList.add('pop-up');
+    popUpWrapper.appendChild(popUp);
 
-    clearTimeout(popUpInterval);
-    popUpInterval = setTimeout(() => {
-        popUp.classList.remove('show');
-    }, 2000);
+    setTimeout(() => {
+        popUp.classList.add('show');
+    }, 1);
+
+    setTimeout (() => {
+        popUp.classList.remove('show')
+        setTimeout(() => {popUpWrapper.removeChild(popUp)},500)
+    }, 2500)
 }
 
 function declareWinner(id, pun = false) {
