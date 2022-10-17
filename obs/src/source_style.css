@@ -178,10 +178,16 @@ body {
     grid-row: 1;
 }
 
-.pop-up {
+.pop-up-wrapper {
     position: fixed;
     bottom: var(--margin-size);
     left: var(--margin-size);
+    display: flex;
+    flex-direction: column-reverse;
+    gap: .4rem;
+}
+
+.pop-up {
     display: flex;
     align-items: center;
     transition: 500ms ease-in-out;
