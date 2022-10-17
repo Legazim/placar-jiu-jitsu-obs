@@ -20,6 +20,18 @@ body {
     flex-direction: column;
 }
 
+#ip {
+    width: fit-content;
+    position: fixed;
+    padding: .5em;bottom: 0;
+    opacity: 0.1;
+}
+
+#ip:hover {
+    opacity: 1
+}
+
+
 section {
     width: 100%;
     height: 100%;
