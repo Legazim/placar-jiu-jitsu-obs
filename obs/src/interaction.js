@@ -5,7 +5,6 @@ var sponsors = [];
 var sponsorInterval;
 
 // Sponsors slideshow
-
 for (let i = 1; i <= sponsorsNumber; i++) {
     sponsors.push(`sponsors/${i}.jpg`);
 }

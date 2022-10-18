@@ -1,11 +1,11 @@
 // Conection to websocket
 isConnected = false;
-setConnection()
+setConnection();
 
 document.getElementById('ip').addEventListener('click', () => {
-    let ip = prompt("IP do servidor", "127.0.0.1")
-    setConnection(ip)
-})
+    let ip = prompt('IP do servidor', '127.0.0.1');
+    setConnection(ip);
+});
 
 var ws;
 

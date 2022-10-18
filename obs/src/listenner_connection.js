@@ -7,7 +7,7 @@ var popUpInterval;
 var fieldsId = [];
 var isConnected = false;
 
-setConnection()
+setConnection();
 
 getFields.forEach((field) => {
     fieldsId.push(field.getAttribute('id'));
@@ -33,7 +33,7 @@ function setConnection(ip = 'localhost') {
     });
 
     ws.addEventListener('message', (msg) => {
-        wsListener(msg)
+        wsListener(msg);
     });
 }
 
@@ -114,14 +114,13 @@ function showPoint(data) {
         increment = '-';
     }
 
-    const popUp = document.createElement('div')
-    content = 
-        `<div id="value" class="value ${data.color}">
+    const popUp = document.createElement('div');
+    content = `<div id="value" class="value ${data.color}">
             <span>${increment}</span><span id="points">${points}</span>
         </div>
         <div id="pop-up-text" class="text">
             <span>${text}</span>
-        </div>`
+        </div>`;
     popUp.innerHTML = content;
     popUp.classList.add('pop-up');
     popUpWrapper.appendChild(popUp);
@@ -130,10 +129,12 @@ function showPoint(data) {
         popUp.classList.add('show');
     }, 1);
 
-    setTimeout (() => {
-        popUp.classList.remove('show')
-        setTimeout(() => {popUpWrapper.removeChild(popUp)},500)
-    }, 2500)
+    setTimeout(() => {
+        popUp.classList.remove('show');
+        setTimeout(() => {
+            popUpWrapper.removeChild(popUp);
+        }, 500);
+    }, 2500);
 }
 
 function declareWinner(id, pun = false) {

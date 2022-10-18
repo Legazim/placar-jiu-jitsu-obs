@@ -3,10 +3,10 @@ const bc = new BroadcastChannel('controller');
 // Handle incoming messages from BroadcastChannel
 bc.addEventListener('message', (msg) => {
     let broadcastData = msg.data;
-    console.log(broadcastData)
+    console.log(broadcastData);
 
     if ('IP' in broadcastData) {
-        setConnection(broadcastData.IP)
+        setConnection(broadcastData.IP);
     }
 
     if ('showPlacar' in broadcastData) {

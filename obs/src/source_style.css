@@ -184,7 +184,7 @@ body {
     left: var(--margin-size);
     display: flex;
     flex-direction: column;
-    gap: .4rem;
+    gap: 0.4rem;
 }
 
 .pop-up {
