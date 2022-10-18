@@ -45,7 +45,7 @@ function sponsorsState(data) {
 }
 
 function popUpState(data) {
-    let popUp = document.getElementById('pop-up');
+    let popUp = document.getElementById('pop-up-wrapper');
     if (data.showPopUp == true) {
         popUp.style.opacity = 1;
     } else {

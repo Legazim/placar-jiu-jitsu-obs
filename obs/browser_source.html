@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browser source</title>
+
     <!-- Script -->
     <script defer src="src/interaction.js"></script>
 
@@ -14,8 +15,8 @@
     <link rel="icon" href="../favicon.svg">
 
     <!-- Handle websocket and broadcast inputs -->
-    <script defer src="src/listenner_connection.js"></script>
-    <script defer src="src/listenner_broadcast.js"></script>
+    <script defer src="./src/listenner_connection.js"></script>
+    <script defer src="./src/listenner_broadcast.js"></script>
 </head>
 
 <body>
@@ -28,6 +29,7 @@
                 </p>
             </div>
         </div>
+
         <div class="competitor blue">
             <div>
                 <div class="nome">
@@ -43,9 +45,6 @@
 
                         <p id="bt" class="-js-get-id total-ponto">00</p>
                     </div>
-                    <!-- <p id="bs4" class="-js-get-id ponto">00</p>
-                        <p id="bs3" class="-js-get-id ponto">00</p>
-                        <p id="bs2" class="-js-get-id ponto">00</p> -->
                     <div class="v-p">
                         <p class="van">
                             <span id="bv" class="-js-get-id display">00</span>
@@ -57,6 +56,7 @@
                 </div>
             </div>
         </div>
+
         <div class="competitor white">
             <div>
                 <div class="nome">
@@ -71,9 +71,6 @@
                     <div class="total">
                         <p id="wt" class="-js-get-id total-ponto">00</p>
                     </div>
-                    <!-- <p id="ws4" class="-js-get-id ponto">00</p>
-                    <p id="ws3" class="-js-get-id ponto">00</p>
-                    <p id="ws2" class="-js-get-id ponto">00</p> -->
                     <div class="v-p">
                         <p class="van">
                             <span id="wv" class="-js-get-id display">00</span>
@@ -89,15 +86,8 @@
     </section>
 
     <section id="pop-up-wrapper" class="pop-up-wrapper">
+        <!-- Pop-ups are shown via javascript -->
     </section>
-    <!-- <div id="pop-up" class="pop-up"> -->
-    <!--     <div id="value" class="value"> -->
-    <!--         <span id="increment"></span><span id="points"></span> -->
-    <!--     </div> -->
-    <!--     <div id="pop-up-text" class="text"> -->
-    <!--         <span></span> -->
-    <!--     </div> -->
-    <!-- </div> -->
 
     <section class="carrousel-container">
         <div id="carrousel" class="carrousel-slider">
