@@ -161,6 +161,7 @@ function startTimer() {
     pTimer.timerRunning = true;
     pTimer.timerStatus.text = 'Tempo restante';
     pTimer.timerStatus.status = 'running';
+    updateTimerDOM();
     cron = setInterval(() => {
         milesimo += 100;
         if (milesimo >= 1000) {
