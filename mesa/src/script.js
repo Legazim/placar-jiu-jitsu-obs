@@ -120,8 +120,9 @@ fieldsId.forEach((id) => {
                     if (
                         placar[id[0]]['min'][clicked] &&
                         placar[id[0]][clicked] == 1
-                    )
+                    ) {
                         return;
+                    }
                     placar[id[0]][clicked]--;
                     break;
                 case 'p':
@@ -206,9 +207,16 @@ function timer() {
 function timerCommand(command) {
     if (pTimer.timerRunning == false) {
         if (command.ctrlKey) {
-            if (confirm('Deseja reiniciar o tempo e a contagem atual'));
-            removeWinner();
-            resetScoreAndTime();
+            if (confirm('Deseja reiniciar o tempo e a contagem atual')) {
+                removeWinner();
+                resetScoreAndTime();
+            }
+        } else if (
+            pTimer.timerStatus.status == 'stopped' &&
+            pTimer.mm == 0 &&
+            pTimer.ss == 0
+        ) {
+            return;
         } else {
             startTimer();
         }

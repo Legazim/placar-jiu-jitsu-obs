@@ -15,6 +15,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+    /* outline: 1px dotted limegreen; */
 }
 
 body {
@@ -128,7 +129,7 @@ body {
 .total {
     min-width: 2ch;
     text-align: right;
-    font-size: 2.5em;
+    font-size: 2.3em;
     line-height: 100%;
     padding-bottom: 0.1em;
 }
