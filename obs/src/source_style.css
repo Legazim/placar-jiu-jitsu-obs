@@ -121,6 +121,10 @@ body {
     background-color: var(--clr-background-w);
 }
 
+.blue .total {
+    color: white;
+}
+
 .total {
     min-width: 2ch;
     text-align: right;
@@ -152,8 +156,9 @@ body {
 }
 
 .carrousel-container {
-    width: 8em;
     height: 6em;
+    aspect-ratio: 1/1;
+    background-color: white;
     position: fixed;
     bottom: var(--margin-size);
     right: var(--margin-size);

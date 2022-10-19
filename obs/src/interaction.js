@@ -1,4 +1,4 @@
-const sponsorsNumber = 12;
+const sponsorsNumber = 11;
 const slider = document.querySelector('.carrousel-slider');
 var index = 0;
 var sponsors = [];
