@@ -6,7 +6,7 @@ const getFields = document.querySelectorAll('.-js-get-id');
 var popUpInterval;
 var fieldsId = [];
 var isConnected = false;
-
+var ws;
 setConnection();
 
 getFields.forEach((field) => {
@@ -20,7 +20,7 @@ function setConnection(ip = 'localhost') {
     const IP_ADDR = urlParams.has('ip') ? urlParams.get('ip') : ip;
     const PORT = 8082;
 
-    const ws = new WebSocket(`ws://${IP_ADDR}:${PORT}`);
+    ws = new WebSocket(`ws://${IP_ADDR}:${PORT}`);
 
     ws.addEventListener('open', () => {
         console.log('Connected');

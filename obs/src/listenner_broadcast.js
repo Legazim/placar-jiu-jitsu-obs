@@ -6,6 +6,7 @@ bc.addEventListener('message', (msg) => {
     console.log(broadcastData);
 
     if ('IP' in broadcastData) {
+        ws.close();
         setConnection(broadcastData.IP);
     }
 

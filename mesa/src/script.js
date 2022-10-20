@@ -4,6 +4,7 @@ setConnection();
 
 document.getElementById('ip').addEventListener('click', () => {
     let ip = prompt('IP do servidor', '127.0.0.1');
+    ws.close();
     setConnection(ip);
 });
 
