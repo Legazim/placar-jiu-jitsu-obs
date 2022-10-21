@@ -1,4 +1,4 @@
-// Conection to websocket
+// Connection to websocket
 isConnected = false;
 setConnection();
 
