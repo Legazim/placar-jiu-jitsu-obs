@@ -1,71 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Controller</title>
+        <script defer src="src/controller.js"></script>
+        <link rel="stylesheet" href="src/controller_style.css" />
+        <link rel="icon" href="../favicon.svg" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Controller</title>
-    <script defer src="src/controller.js"></script>
-    <link rel="stylesheet" href="src/controller_style.css" />
-    <link rel="icon" href="../favicon.svg" />
-</head>
-
-<body>
-    <div>
-        <label>Mostrar placar</label>
-        <input type="checkbox" id="mostrar-placar" checked />
-    </div>
-
-    <div>
-        <label>Mostrar patrocínios</label>
-        <input type="checkbox" id="mostrar-patrocinios" checked />
-    </div>
-
-    <div>
-        <label>Mostrar pontos marcados (Pop up)</label>
-        <input type="checkbox" id="mostrar-pop-up" checked />
-    </div>
-
-    <div class="nomes">
-        <div class="blue">
-            <label>Lutador lado azul</label>
-            <input id="blue-name" type="text" placeholder="Nome" />
-            <input id="blue-team" type="text" placeholder="Equipe" />
+    <body>
+        <div>
+            <label>Mostrar placar</label>
+            <input type="checkbox" id="mostrar-placar" checked />
         </div>
-        <div class="white">
-            <label>Lutador lado branco</label>
-            <input id="white-name" type="text" placeholder="Nome" />
-            <input id="white-team" type="text" placeholder="Equipe" />
+
+        <div>
+            <label>Mostrar patrocínios</label>
+            <input type="checkbox" id="mostrar-patrocinios" checked />
         </div>
-    </div>
 
-    <div class="options">
-        <button type="submit" id="alterNames">Alterar nomes</button>
-        <button id="saveNames">Salvar nomes</button>
-    </div>
-
-    <div class="lutas">
-        <label>Lutas salvas</label>
-        <select name="lutas" id="lutas">
-            <option value="" disabled selected hidden>
-                Selecionar luta salva
-            </option>
-        </select>
-    </div>
-
-    <div class="options">
-        <button id="apagarLuta">Apagar luta selecionada</button>
-    </div>
-
-    <div>
-        <label id="label-ip"><u>Ip</u> <span id="ip-status">-</span></label>
-        <div id="ip-options" class="hidden">
-            <input type="text" id="ip" placeholder="127.0.0.1" minlength="7" maxlength="15" size="15" /><br />
-            <button type="submit" id="submit-ip">Procurar ip</button>
-            <button type="submit" id="hide-ip">Esconder opções</button>
+        <div>
+            <label>Mostrar pontos marcados (Pop up)</label>
+            <input type="checkbox" id="mostrar-pop-up" checked />
         </div>
-    </div>
-</body>
 
+        <div class="nomes">
+            <div class="blue">
+                <label>Lutador lado azul</label>
+                <input id="blue-name" type="text" placeholder="Nome" />
+                <input id="blue-team" type="text" placeholder="Equipe" />
+            </div>
+            <div class="white">
+                <label>Lutador lado branco</label>
+                <input id="white-name" type="text" placeholder="Nome" />
+                <input id="white-team" type="text" placeholder="Equipe" />
+            </div>
+        </div>
+
+        <div class="options">
+            <button type="submit" id="alterNames">Alterar nomes</button>
+            <button id="saveNames">Salvar nomes</button>
+        </div>
+
+        <div class="lutas">
+            <label>Lutas salvas</label>
+            <select name="lutas" id="lutas">
+                <option value="" disabled selected hidden>
+                    Selecionar luta salva
+                </option>
+            </select>
+        </div>
+
+        <div class="options">
+            <button id="apagarLuta">Apagar luta selecionada</button>
+        </div>
+
+        <div>
+            <label id="label-ip"><u>Ip</u> <span id="ip-status">-</span></label>
+            <div id="ip-options" class="hidden">
+                <input
+                    type="text"
+                    id="ip"
+                    placeholder="127.0.0.1"
+                    minlength="7"
+                    maxlength="15"
+                    size="15"
+                /><br />
+                <button type="submit" id="submit-ip">Procurar ip</button>
+                <button type="submit" id="hide-ip">Esconder opções</button>
+            </div>
+        </div>
+    </body>
 </html>
