@@ -1,8 +1,20 @@
 const sponsorsNumber = 11;
+const sponsorKindValues = {
+    0: {
+        text: 'Patrocínio',
+        time: 1000,
+    },
+    5: {
+        text: 'Apoio',
+        time: 300,
+    },
+};
+const sponsorKind = document.getElementById('sponsorKind');
 const slider = document.querySelector('.carrousel-slider');
-var index = 0;
+var index = -1;
 var sponsors = [];
 var sponsorInterval;
+var timeoutInterval = sponsorKindValues[0]['time'];
 
 // Sponsors slideshow
 for (let i = 1; i <= sponsorsNumber; i++) {
@@ -10,7 +22,8 @@ for (let i = 1; i <= sponsorsNumber; i++) {
 }
 
 insertSponsors();
-loopSponsors();
+nextSponsor();
+sponsorKindChange(sponsorKindValues[0]['text']);
 
 function insertSponsors() {
     for (let i = 0; i < sponsors.length; i++) {
@@ -20,9 +33,9 @@ function insertSponsors() {
 }
 
 function loopSponsors() {
-    sponsorInterval = setInterval(() => {
+    sponsorInterval = setTimeout(() => {
         nextSponsor();
-    }, 10000);
+    }, timeoutInterval);
 }
 
 function nextSponsor() {
@@ -34,6 +47,11 @@ function nextSponsor() {
         index = 0;
         changeSponsor(0);
     }
+    if (index in sponsorKindValues) {
+        sponsorKindChange(sponsorKindValues[index]['text']);
+        timeoutInterval = sponsorKindValues[index]['time'];
+    }
+    loopSponsors();
 }
 
 function changeSponsor(index) {
@@ -43,4 +61,15 @@ function changeSponsor(index) {
         img.classList.add('off');
     });
     selected.classList.remove('off');
+}
+
+function sponsorKindChange(text) {
+    if (typeof text === 'undefined') return;
+
+    sponsorKind.classList.add('sponsors__kind--hidden');
+    setTimeout(() => {
+        sponsorKind.classList.remove('sponsors__kind--hidden');
+        text = text.toUpperCase() + ':';
+        sponsorKind.innerHTML = text;
+    }, 600);
 }
