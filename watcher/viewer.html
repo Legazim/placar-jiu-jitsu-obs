@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../mesa/src/style.css" />
+        <title>Watcher</title>
+        <script defer src="../obs/src/browser_src/websocket.js"></script>
+        <script defer src="./src/script.js"></script>
+        <link rel="icon" href="../favicon.svg" />
+    </head>
+
+    <body>
+        <div class="configs">
+            <input type="button" value="SERVER IP" id="ip" />
+        </div>
+        <section>
+            <div class="competidor blue">
+                <div>
+                    <div class="pontos">
+                        <div>
+                            <p class="label">Montada</p>
+                            <p class="label">Pegada pelas costas</p>
+                            <p id="bs4" class="-js-get-id ponto">00</p>
+                        </div>
+                        <div>
+                            <p class="label">Passagem de guarda</p>
+                            <p id="bs3" class="-js-get-id ponto">00</p>
+                        </div>
+                        <div>
+                            <p class="label">Queda</p>
+                            <p class="label">Raspagem</p>
+                            <p class="label">Joelho na barriga</p>
+                            <p id="bs2" class="-js-get-id ponto">00</p>
+                        </div>
+                        <div class="v-p">
+                            <p class="van">
+                                <span id="bv" class="-js-get-id display"
+                                    >00</span
+                                ><span class="label">Vantagens</span>
+                            </p>
+                            <p class="pun">
+                                <span id="bp" class="-js-get-id display"
+                                    >00</span
+                                ><span class="label">Punições</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <p id="bstatus" class="status-final">0</p>
+                        <p class="label">Pontuação total</p>
+                        <p id="bt" class="-js-get-id total-ponto">00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timer">
+                <p id="time-status" class="status"></p>
+                <div class="counter">
+                    <p id="counter">
+                        <span id="minutes">00</span>:<span id="seconds"
+                            >00</span
+                        >
+                    </p>
+                </div>
+            </div>
+
+            <div class="competidor white">
+                <div>
+                    <div class="pontos">
+                        <div>
+                            <p class="label">Montada</p>
+                            <p class="label">Pegada pelas costas</p>
+                            <p id="ws4" class="-js-get-id ponto">00</p>
+                        </div>
+                        <div>
+                            <p class="label">Passagem de guarda</p>
+                            <p id="ws3" class="-js-get-id ponto">00</p>
+                        </div>
+                        <div>
+                            <p class="label">Queda</p>
+                            <p class="label">Raspagem</p>
+                            <p class="label">Joelho na barriga</p>
+                            <p id="ws2" class="-js-get-id ponto">00</p>
+                        </div>
+                        <div class="v-p">
+                            <p class="van">
+                                <span id="wv" class="-js-get-id display"
+                                    >00</span
+                                ><span class="label">Vantagens</span>
+                            </p>
+                            <p class="pun">
+                                <span id="wp" class="-js-get-id display"
+                                    >00</span
+                                ><span class="label">Punições</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <p id="wstatus" class="status-final">0</p>
+                        <p class="label">Pontuação total</p>
+                        <p id="wt" class="-js-get-id total-ponto">00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

@@ -21,15 +21,18 @@ body {
     flex-direction: column;
 }
 
-#ip {
+.configs {
     width: fit-content;
     position: fixed;
-    padding: 0.5em;
     bottom: 0;
-    opacity: 0.1;
 }
 
-#ip:hover {
+.configs input {
+    opacity: 0.05;
+    padding: 0.5em;
+}
+
+.configs input:hover {
     opacity: 1;
 }
 
@@ -139,8 +142,8 @@ p {
 .timer {
     position: fixed;
     top: 50%;
-    left: 0;
-    transform: translate(var(--transform, 0), -50%);
+    left: 50%;
+    transform: translate(10%, -50%);
 }
 
 .status {

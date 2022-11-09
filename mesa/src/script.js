@@ -499,18 +499,3 @@ function resetScoreAndTime() {
     updateTimerDOM();
     updatePlacarDOM();
 }
-
-['resize', 'load', 'scroll'].forEach((evt) => {
-    window.addEventListener(evt, () => {
-        setTimerDOMPosition();
-    });
-});
-
-function setTimerDOMPosition() {
-    let referenceRect = document.getElementById('bt').getBoundingClientRect();
-    let elementRect = document
-        .getElementById('time-status')
-        .getBoundingClientRect();
-    let distance = referenceRect.right - elementRect.width;
-    document.documentElement.style.cssText = `--transform: ${distance}px`;
-}

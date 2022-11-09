@@ -7,15 +7,16 @@
         <title>Browser source</title>
 
         <!-- Script -->
-        <script defer src="src/interaction.js"></script>
+        <script defer src="src/browser_src/sponsors.js"></script>
+        <script defer src="./src/browser_src/interaction.js"></script>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="src/source_style.css" />
+        <link rel="stylesheet" href="src/browser_src/style.css" />
         <link rel="icon" href="../favicon.svg" />
 
         <!-- Handle websocket and broadcast inputs -->
-        <script defer src="./src/listenner_connection.js"></script>
-        <script defer src="./src/listenner_broadcast.js"></script>
+        <script defer src="./src/browser_src/websocket.js"></script>
+        <script defer src="./src/browser_src/broadcast.js"></script>
     </head>
 
     <body>
@@ -96,7 +97,7 @@
             <!-- Pop-ups are shown via javascript -->
         </section>
 
-        <section class="sponsors">
+        <section id="sponsors" class="sponsors">
             <div class="carrousel-container">
                 <div id="carrousel" class="carrousel-slider">
                     <!-- Put the images on via javascript -->

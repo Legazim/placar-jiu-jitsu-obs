@@ -37,11 +37,11 @@ function scoreboardState(data) {
 }
 
 function sponsorsState(data) {
-    let sponsors = document.getElementById('carrousel');
+    let sponsors = document.getElementById('sponsors');
     if (data.showPatrocinios == true) {
-        sponsors.style.opacity = 1;
+        sponsors.classList.remove('off');
     } else {
-        sponsors.style.opacity = 0;
+        sponsors.classList.add('off');
     }
 }
 

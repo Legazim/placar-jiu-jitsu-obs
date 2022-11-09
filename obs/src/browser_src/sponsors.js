@@ -1,13 +1,7 @@
 const sponsorsNumber = 11;
 const sponsorKindValues = {
-    0: {
-        text: 'Patrocínio',
-        time: 1000,
-    },
-    5: {
-        text: 'Apoio',
-        time: 300,
-    },
+    0: { text: 'Patrocínio', time: 10000 },
+    5: { text: 'Apoio', time: 3000 },
 };
 const sponsorKind = document.getElementById('sponsorKind');
 const slider = document.querySelector('.carrousel-slider');
