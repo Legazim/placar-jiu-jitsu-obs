@@ -5,14 +5,12 @@ const checkboxPatrocinios = document.getElementById('mostrar-patrocinios');
 const checkboxPopUp = document.getElementById('mostrar-pop-up');
 const lutas = document.getElementById('lutas');
 
-document.getElementById('label-ip').onclick = () => {
-    document.getElementById('ip-options').classList.remove('hidden');
-    document.getElementById('ip-status').innerHTML = '+';
-};
-
-document.getElementById('hide-ip').onclick = () => {
-    document.getElementById('ip-options').classList.add('hidden');
-    document.getElementById('ip-status').innerHTML = '-';
+document.getElementById('toggle-ip').onclick = () => {
+    document.getElementById('toggle-ip').classList.toggle('btn-secondary');
+    document
+        .getElementById('toggle-ip')
+        .classList.toggle('btn-outline-secondary');
+    document.getElementById('ip-options').classList.toggle('invisible');
 };
 
 document.getElementById('submit-ip').onclick = () => {
@@ -132,4 +130,8 @@ function newId() {
         });
     }
     return id;
+}
+
+function is_visible(e) {
+    return e.offsetWidth > 0 || e.offsetHeight > 0;
 }
