@@ -1,0 +1,114 @@
+{
+    "01": {
+        "blue": { "name": "Anderson Sorriso", "team": "Oklyn" },
+        "white": { "name": "Noah Freire", "team": "Striker" }
+    },
+    "02": {
+        "blue": { "name": "Nycolas Fanchioti", "team": "GFTEAM" },
+        "white": { "name": "Gustavo Louvem", "team": "Atitude" }
+    },
+    "03": {
+        "blue": { "name": "José Ribeiro", "team": "Striker" },
+        "white": { "name": "Gabriel Moraes", "team": "GFTEAM" }
+    },
+    "04": {
+        "blue": { "name": "Samuel de Paulo", "team": "Striker" },
+        "white": { "name": "Raphael Kalinsky", "team": "Kong" }
+    },
+    "05": {
+        "blue": { "name": "Israel Foresti", "team": "Oklyn" },
+        "white": { "name": "Matheus Araújo", "team": "Striker" }
+    },
+    "06": {
+        "blue": { "name": "Ana Vitória", "team": "Striker" },
+        "white": { "name": "Rebeca Scherer", "team": "Agnaldo Goés" }
+    },
+    "07": {
+        "blue": { "name": "Ana Maria Reis", "team": "Striker" },
+        "white": { "name": "Ester Zuqui", "team": "Fidelis" }
+    },
+    "08": {
+        "blue": { "name": "Henrique Cruz", "team": "Striker" },
+        "white": { "name": "João Victor de Almeida", "team": "Kong" }
+    },
+    "09": {
+        "blue": { "name": "João Ângelo", "team": "Striker" },
+        "white": { "name": "Estevão Binda ", "team": "check mate" }
+    },
+    "10": {
+        "blue": { "name": "Eduardo Ceará ", "team": "Striker" },
+        "white": { "name": "Renato Nunes", "team": " N.U" }
+    },
+    "11": {
+        "blue": { "name": "Pedro Henrique ", "team": "Striker" },
+        "white": { "name": "Pedro Souza", "team": " N.U" }
+    },
+    "12": {
+        "blue": { "name": "Silas Silva", "team": "Striker" },
+        "white": { "name": "Yuri de Almeida", "team": "Kong" }
+    },
+    "13": {
+        "blue": { "name": "Carlos Brusco", "team": "Prudêncio" },
+        "white": { "name": "Paulo André ", "team": "GA" }
+    },
+    "14": {
+        "blue": { "name": "Rodrigo Digão", "team": "GFTEAM" },
+        "white": { "name": "Wesley Santos", "team": "GA" }
+    },
+    "15": {
+        "blue": { "name": "Samuel Rezende", "team": "Striker" },
+        "white": { "name": "Otávio Gomes", "team": " MOAMA" }
+    },
+    "16": {
+        "blue": { "name": "Wellington Ribeiro", "team": "Striker" },
+        "white": { "name": "Fábio Loyola", "team": "PRUDÊNCIO" }
+    },
+    "17": {
+        "blue": { "name": "Thiago Paixão", "team": "Striker" },
+        "white": { "name": "Rogério Pinheiro", "team": "GFTEAM" }
+    },
+    "18": {
+        "blue": { "name": "João Henrique", "team": "Striker" },
+        "white": { "name": "Leonardo Mercier", "team": "GA" }
+    },
+    "19": {
+        "blue": { "name": "Adriano Mesquita ", "team": "Striker" },
+        "white": { "name": "Herman Rabugento", "team": "GFTEAM" }
+    },
+    "20": {
+        "blue": { "name": "Edmar Bermudes", "team": "PRUDÊNCIO" },
+        "white": { "name": "Pedro Henrique \"PH\"", "team": "GFTEAM" }
+    },
+    "21": {
+        "blue": { "name": "Héber Cruz", "team": "Striker" },
+        "white": { "name": "Wladimir Porto", "team": "GFTEAM" }
+    },
+    "22": {
+        "blue": { "name": "Daniel Lima", "team": "RSM TEAM" },
+        "white": { "name": "Rafael Peluso", "team": "Striker" }
+    },
+    "23": {
+        "blue": { "name": "Fledis Oliveira", "team": "Tião Gomes" },
+        "white": { "name": "Anderson Fernando", "team": "Pascoal Jiu-jítsu" }
+    },
+    "24": {
+        "blue": { "name": "Danillo Bastos", "team": "STRIKER " },
+        "white": { "name": "Everson Bolonha ", "team": "NOVA UNIÃO" }
+    },
+    "25": {
+        "blue": { "name": "Felipe Salgado ", "team": "Chekmat" },
+        "white": { "name": "Nemuel Cordeiro ", "team": "Striker" }
+    },
+    "26": {
+        "blue": { "name": "Leonardo Tanknews ", "team": "Striker" },
+        "white": { "name": "Elkjaer Lourenço", "team": "GA" }
+    },
+    "27": {
+        "blue": { "name": "Cristiano Santos ", "team": "GA" },
+        "white": { "name": "Antônio Carlos ", "team": "Striker" }
+    },
+    "28": {
+        "blue": { "name": "Wesley Rosa ", "team": "Striker" },
+        "white": { "name": "Gilvan Jr. ", "team": "CheckMate" }
+    }
+}

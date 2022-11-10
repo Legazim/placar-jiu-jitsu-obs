@@ -1,7 +1,11 @@
 const sponsorsNumber = 11;
 const sponsorKindValues = {
-    0: { text: 'Patrocínio', time: 10000 },
-    5: { text: 'Apoio', time: 3000 },
+    0: { time: 5000, text: 'Realização' },
+    1: { time: 10000, text: 'Patrocínio' },
+    2: { time: 3000, text: 'Supervisão' },
+    3: { time: 3000, text: 'Arbitragem' },
+    4: { time: 10000, text: 'Patrocínio' },
+    5: { time: 3000, text: 'Apoio' },
 };
 const sponsorKind = document.getElementById('sponsorKind');
 const slider = document.querySelector('.carrousel-slider');
@@ -63,7 +67,7 @@ function sponsorKindChange(text) {
     sponsorKind.classList.add('sponsors__kind--hidden');
     setTimeout(() => {
         sponsorKind.classList.remove('sponsors__kind--hidden');
-        text = text.toUpperCase() + ':';
+        text = text.toUpperCase();
         sponsorKind.innerHTML = text;
     }, 600);
 }
