@@ -11,7 +11,8 @@
         <script defer src="./src/browser_src/interaction.js"></script>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="src/browser_src/style.css" />
+        <link rel="stylesheet" href="./src/browser_src/style.css" />
+        <!-- <link rel="stylesheet" href="./src/browser_src/no-names.css" /> -->
         <link rel="icon" href="../favicon.svg" />
 
         <!-- Handle websocket and broadcast inputs -->
@@ -32,61 +33,63 @@
                 </div>
             </div>
 
-            <div class="competitor blue">
-                <div>
-                    <div class="nome">
-                        <span id="bname" class="nome-lutador"></span>
-                        <br />
-                        <div class="extras">
-                            <span id="bteam" class="nome-equipe"></span>
-                            <span id="bstatus" class="status-final"></span>
+            <div class="competidores">
+                <div class="competitor blue">
+                    <div>
+                        <div class="nome">
+                            <span id="bname" class="nome-lutador"></span>
+                            <br />
+                            <div class="extras">
+                                <span id="bteam" class="nome-equipe"></span>
+                                <span id="bstatus" class="status-final"></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="pontos">
-                        <div class="total">
-                            <p id="bt" class="-js-get-id total-ponto">00</p>
-                        </div>
-                        <div class="v-p">
-                            <p class="van">
-                                <span id="bv" class="-js-get-id display"
-                                    >00</span
-                                >
-                            </p>
-                            <p class="pun">
-                                <span id="bp" class="-js-get-id display"
-                                    >0</span
-                                >
-                            </p>
+                        <div class="pontos">
+                            <div class="total">
+                                <p id="bt" class="-js-get-id total-ponto">00</p>
+                            </div>
+                            <div class="v-p">
+                                <p class="van">
+                                    <span id="bv" class="-js-get-id display"
+                                        >00</span
+                                    >
+                                </p>
+                                <p class="pun">
+                                    <span id="bp" class="-js-get-id display"
+                                        >0</span
+                                    >
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="competitor white">
-                <div>
-                    <div class="nome">
-                        <span id="wname" class="nome-lutador"></span>
-                        <br />
-                        <div class="extras">
-                            <span id="wteam" class="nome-equipe"></span>
-                            <span id="wstatus" class="status-final"></span>
+                <div class="competitor white">
+                    <div>
+                        <div class="nome">
+                            <span id="wname" class="nome-lutador"></span>
+                            <br />
+                            <div class="extras">
+                                <span id="wteam" class="nome-equipe"></span>
+                                <span id="wstatus" class="status-final"></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="pontos">
-                        <div class="total">
-                            <p id="wt" class="-js-get-id total-ponto">00</p>
-                        </div>
-                        <div class="v-p">
-                            <p class="van">
-                                <span id="wv" class="-js-get-id display"
-                                    >00</span
-                                >
-                            </p>
-                            <p class="pun">
-                                <span id="wp" class="-js-get-id display"
-                                    >0</span
-                                >
-                            </p>
+                        <div class="pontos">
+                            <div class="total">
+                                <p id="wt" class="-js-get-id total-ponto">00</p>
+                            </div>
+                            <div class="v-p">
+                                <p class="van">
+                                    <span id="wv" class="-js-get-id display"
+                                        >00</span
+                                    >
+                                </p>
+                                <p class="pun">
+                                    <span id="wp" class="-js-get-id display"
+                                        >0</span
+                                    >
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

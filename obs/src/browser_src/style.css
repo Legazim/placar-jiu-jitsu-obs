@@ -5,9 +5,11 @@
     --clr-stop: #a40000;
     --clr-running: #008000;
     --clr-pun: #b00202;
+    --clr-background-timer: rgb(200, 200, 200);
+    --clr-font-timer: black;
     --clr-background-w: #ededed;
     --clr-background-b: #3636ff;
-    --border-radius: 0.3rem;
+    --border-radius: 0.4rem;
 }
 
 * {
@@ -23,7 +25,6 @@ body {
     overflow: hidden;
     font-size: 1.3rem;
     font-family: 'Oswald', sans-serif;
-    background-image: linear-gradient(black, #ccc);
 }
 
 .scoreboard {
@@ -44,6 +45,8 @@ body {
     justify-content: flex-end;
     gap: 0.3em;
     padding-right: 0.3em;
+    background-color: var(--clr-background-timer);
+    color: var(--clr-font-timer);
 }
 
 .counter {

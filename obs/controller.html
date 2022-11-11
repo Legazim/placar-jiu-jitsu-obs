@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Controller</title>
         <!-- <script defer src="./src/controller_panel/fetch.js"></script> -->
+        <!-- <script defer src="src/controller_panel/script.js"></script> -->
         <script defer src="src/controller_panel/script.js"></script>
         <!-- Bootstrap -->
         <link
@@ -20,6 +21,29 @@
     <body>
         <br />
         <section class="container">
+            <div>
+                <div id="ip-options">
+                    <div class="input-group">
+                        <div class="input-group-text">IP do servidor</div>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="127.0.0.1"
+                            id="ip"
+                            placeholder="127.0.0.1"
+                            minlength="7"
+                            maxlength="15"
+                            size="15"
+                        />
+                        <button class="btn btn-primary" id="submit-ip">
+                            Procurar ip
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
             <div class="form-check form-switch">
                 <input
                     class="form-check-input"
@@ -51,107 +75,95 @@
                 <label>Mostrar pontos marcados (Pop up)</label>
             </div>
 
-            <hr />
-
-            <label class="form-label mb-1">Lutas salvas</label>
-            <select class="form-select mb-3" id="lutas">
-                <option value="" disabled selected hidden>
-                    Selecionar luta salva
-                </option>
-            </select>
-
             <!-- <div class="options">
                 <button class="btn btn-danger" id="apagarLuta">
                     Apagar luta selecionada
                 </button>
             </div> -->
 
-            <div class="blue">
-                <label class="form-label mb-1">Lutador lado azul</label>
-                <div class="input-group mb-3">
-                    <span
-                        class="input-group-text text-bg-primary"
-                        id="basic-addon3"
-                        >Nome</span
-                    >
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="blue-name"
-                        placeholder="Inserir nome"
-                    />
-                </div>
-                <div class="input-group mb-3">
-                    <span
-                        class="input-group-text text-bg-primary"
-                        id="basic-addon3"
-                        >Equipe</span
-                    >
-                    <input
-                        class="form-control"
-                        id="blue-team"
-                        type="text"
-                        placeholder="Inserir equipe"
-                    />
-                </div>
-            </div>
+            <br />
 
-            <div class="white">
-                <label class="form-label mb-1">Lutador lado branco</label>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">Nome</span>
-                    <input
-                        class="form-control"
-                        id="white-name"
-                        type="text"
-                        placeholder="Inserir nome"
-                    />
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3"
-                        >Equipe</span
-                    >
-                    <input
-                        class="form-control"
-                        id="white-team"
-                        type="text"
-                        placeholder="Inserir equipe"
-                    />
-                </div>
-            </div>
+            <button
+                class="btn btn-outline-secondary mb-3"
+                id="toggle-lutadores"
+            >
+                Lutadores
+            </button>
 
-            <div class="col-12 mb-3">
-                <button class="btn btn-primary" type="submit" id="alterNames">
-                    Alterar nomes
-                </button>
-                <button class="btn" id="saveNames">Salvar luta</button>
-            </div>
-
-            <hr />
-
-            <div>
-                <button class="btn btn-outline-secondary mb-3" id="toggle-ip">
-                    Ip
-                </button>
-                <div id="ip-options" class="invisible">
-                    <div class="input-group">
-                        <div class="input-group-text">IP do servidor</div>
+            <div class="invisible" id="lutadores">
+                <div class="blue">
+                    <label class="form-label mb-1">Lutador lado azul</label>
+                    <div class="input-group mb-3">
+                        <span
+                            class="input-group-text text-bg-primary"
+                            id="basic-addon3"
+                            >Nome</span
+                        >
                         <input
                             type="text"
                             class="form-control"
-                            placeholder="127.0.0.1"
-                            id="ip"
-                            placeholder="127.0.0.1"
-                            minlength="7"
-                            maxlength="15"
-                            size="15"
+                            id="blue-name"
+                            placeholder="Inserir nome"
                         />
-                        <button class="btn btn-primary" id="submit-ip">
-                            Procurar ip
-                        </button>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span
+                            class="input-group-text text-bg-primary"
+                            id="basic-addon3"
+                            >Equipe</span
+                        >
+                        <input
+                            class="form-control"
+                            id="blue-team"
+                            type="text"
+                            placeholder="Inserir equipe"
+                        />
                     </div>
                 </div>
+                <div class="white">
+                    <label class="form-label mb-1">Lutador lado branco</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3"
+                            >Nome</span
+                        >
+                        <input
+                            class="form-control"
+                            id="white-name"
+                            type="text"
+                            placeholder="Inserir nome"
+                        />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3"
+                            >Equipe</span
+                        >
+                        <input
+                            class="form-control"
+                            id="white-team"
+                            type="text"
+                            placeholder="Inserir equipe"
+                        />
+                    </div>
+                </div>
+                <label class="form-label mb-1">Lutas salvas</label>
+                <select class="form-select mb-3" id="lutas">
+                    <option value="none" selected hidden>
+                        Selecionar luta salva
+                    </option>
+                </select>
+
+                <div class="mb-3">
+                    <button
+                        class="btn btn-primary"
+                        type="submit"
+                        id="alterNames"
+                    >
+                        Alterar nomes
+                    </button>
+                    <button class="btn" id="switchNames">Inverter lados</button>
+                </div>
             </div>
+
             <br />
         </section>
     </body>

@@ -1,0 +1,30 @@
+.scoreboard {
+    width: 13em;
+}
+
+.competidores {
+    display: flex;
+    font-size: 1.401em;
+}
+
+.competitor > * {
+    padding-left: 0em;
+}
+
+.nome {
+    display: none;
+}
+
+.pontos {
+    gap: 0.5em;
+    padding-inline: 0.305em;
+    padding-top: 0;
+}
+
+.v-p {
+    display: initial;
+}
+
+.pun {
+    filter: none;
+}
