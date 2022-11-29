@@ -160,6 +160,7 @@ body {
 }
 
 .sponsors {
+    font-size: 1.3em;
     position: fixed;
     bottom: var(--margin-size);
     right: var(--margin-size);
