@@ -188,7 +188,7 @@ function timer() {
     if (pTimer.ss < 0) {
         pTimer.ss = 59;
         pTimer.mm--;
-        if (pTimer.mm <= 0) {
+        if (pTimer.mm < 0) {
             timesUp();
         }
     }
